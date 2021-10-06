@@ -18,6 +18,7 @@ class DrawerView extends StatelessWidget {
           model.onModelReady();
         },
         builder: (context, model, child) {
+          print(model.checkLogin);
           return Container(
             width: 50.w,
             child: Drawer(

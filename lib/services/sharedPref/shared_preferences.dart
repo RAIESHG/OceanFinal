@@ -27,7 +27,7 @@ class SharedPreferencesService extends LocalStorageStrategy {
 
     await _pref.remove("userProfile");
     var saveData = await _pref.setString("userProfile", jsonEncode(map));
-    persistLogin();
+    await persistLogin();
 
     print(saveData ? "Saved" : "Couldnot save");
   }

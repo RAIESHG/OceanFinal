@@ -85,11 +85,9 @@ class DrawerViewModel extends BaseViewModel {
   ];
 
   Future<void> onModelReady() async {
-   checkLogin = await  isLoggedIn();
-  }
-
-  Future<bool> isLoggedIn() async {
-    return await sharedPreferencesService.loginCheck();
+    checkLogin = await await sharedPreferencesService.loginCheck();
+    print("YEIIIIIIIIIIIIIIIIIIIIII hooooo${checkLogin}");
+    notifyListeners();
   }
 
   void onLogout() async {

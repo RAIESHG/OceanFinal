@@ -11,6 +11,11 @@ class BottomNavigationBarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<BottomNavigationViewModel>.reactive(
+        onModelReady: (
+            BottomNavigationViewModel model
+        ) {
+
+        },
         builder: (context, model, child) {
           return BottomNavigationBar(
               backgroundColor: Color(0xffDEDBDB),
@@ -27,12 +32,13 @@ class BottomNavigationBarView extends StatelessWidget {
                   icon: IconWidget(path: homeIcon, color: Color(0xff005AAA)),
                   label: "Home",
                 ),
-              // BottomNavigationBarItem(
-              //   icon: IconWidget(path:libraryIcon, color: Color(0xff005AAA)),
-              //   label: "My library",
-              // ),
+                // BottomNavigationBarItem(
+                //   icon: IconWidget(path:libraryIcon, color: Color(0xff005AAA)),
+                //   label: "My library",
+                // ),
+              
                 BottomNavigationBarItem(
-                    icon: IconWidget(path:userIcon, color: Color(0xff005AAA)),
+                    icon: IconWidget(path: userIcon, color: Color(0xff005AAA)),
                     label: "Profile"),
               ]);
         },

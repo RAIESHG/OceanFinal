@@ -52,7 +52,7 @@ class ProfileView extends StatelessWidget {
                                       SizedBox(
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                0.09,
+                                                0.15,
                                       ),
                                       text(
                                         "${model.item!.firstName}",
@@ -73,7 +73,11 @@ class ProfileView extends StatelessWidget {
                                         onPressed: () {
                                           model.navigatetoeditProfile();
                                         },
-                                        child: Text("Edit Profile",style: TextStyle(fontWeight: FontWeight.bold),),
+                                        child: Text(
+                                          "Edit Profile",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                       SizedBox(
                                         height:
@@ -133,14 +137,23 @@ class ProfileView extends StatelessWidget {
                           right: 20,
                           left: 20,
                           child: Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: FadeInImage(
-                                image: NetworkImage(model.item!.image!),
-                                placeholder: AssetImage(
-                                    "assets/icons/placeholder.png",),
-                              ),
-                            ),
+                            child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 225.0,
+                                  minWidth: 30.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: FadeInImage(
+                                    image: NetworkImage(model.item!.image!),
+                                    placeholder: AssetImage(
+                                      "assets/icons/placeholder.png",
+                                    ),
+                                  ),
+                                )),
                           ),
                         ),
                       ],

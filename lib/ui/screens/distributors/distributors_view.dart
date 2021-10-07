@@ -26,26 +26,26 @@ class DistributorView extends StatelessWidget {
           return Scaffold(
             backgroundColor: Colors.grey.shade300,
             appBar: appBarWithSearch(context),
-            body: Column(
-              children: [
-                Container(
-                    height: 7.h,
-                    width: double.infinity,
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "${model.distributorData!.length} Distributors",
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                    )),
-                Expanded(
-                  child: model.isBusy
-                      ? SpinKitWave(
-                          itemCount: 8,
-                          color: colorPrimary,
-                        )
-                      : AnimationLimiter(
+            body: model.isBusy
+                ? SpinKitWave(
+                    itemCount: 8,
+                    color: colorPrimary,
+                  )
+                : Column(
+                    children: [
+                      Container(
+                          height: 7.h,
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "${model.distributorData!.length} Distributors",
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          )),
+                      Expanded(
+                        child: AnimationLimiter(
                           child: ListView.builder(
                             // shrinkWrap: true,
                             itemCount: model.distributorData!.length,
@@ -83,7 +83,6 @@ class DistributorView extends StatelessWidget {
                                               title:
                                                   "${model.distributorData![index].contactPerson}",
                                               icon: Icons.person,
-                                              
                                             ),
                                             SizedBox(
                                               height: 2.h,
@@ -117,9 +116,9 @@ class DistributorView extends StatelessWidget {
                             },
                           ),
                         ),
-                ),
-              ],
-            ),
+                      ),
+                    ],
+                  ),
           );
         },
         viewModelBuilder: () => DistributerViewmodel());

@@ -15,66 +15,76 @@ class CategoriesDrawer extends ViewModelWidget<ViewAllViewmodel> {
   @override
   Widget build(BuildContext context, ViewAllViewmodel model) {
     return SafeArea(
-      child: Drawer(
-        child: Flex(
-          direction: Axis.vertical,
-          children: [
-            Container(
-              height: 30.h,
-              width: double.infinity,
-              color: colorPrimary,
-              child: Column(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 12.0),
-                    child: Assetimage(path:logo, height: 110),
-                  ),
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    padding: EdgeInsets.only(left: 12.0, bottom: 12.0),
-                    child: text(
-                      "Categories",
-                      textColor: Colors.white,
-                      fontSize: 20,
-                      fontweight: FontWeight.w700,
+      child: Container(
+          width: 57.w,
+        child: Drawer(
+          child: Flex(
+            direction: Axis.vertical,
+            children: [
+              Container(
+                height: 30.h,
+                width: double.infinity,
+                color: colorPrimary,
+                child: Column(
+               
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 12.0),
+                      child: Assetimage(path:logo, height: 110),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                key: Key('builder ${model.expandedTile.toString()}'),
-                physics: BouncingScrollPhysics(),
-                itemCount: results.categories?.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return BuildExpansionTile(
-                    category: results.categories![index],
-                    initiallyExpanded: index == model.expandedTile,
-                    index: index,
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: ActionChip(
-                onPressed: () {
-                  model.changeActiveActegory(0);
-                },
-                backgroundColor: colorPrimary,
-                label: text(
-                  "Clear all",
-                  textColor: whiteColor,
-                  fontweight: FontWeight.w600,
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      padding: EdgeInsets.only(left: 12.0, bottom: 12.0),
+                      child: text(
+                        "Categories",
+                        textColor: Colors.white,
+                        fontSize: 12.sp,
+                        fontweight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            )
-          ],
+              Expanded(
+                child: ListView.builder(
+                  key: Key('builder ${model.expandedTile.toString()}'),
+                  physics: BouncingScrollPhysics(),
+                  itemCount: results.categories?.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return BuildExpansionTile(
+                      category: results.categories![index],
+                      initiallyExpanded: index == model.expandedTile,
+                      index: index,
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    model.changeActiveActegory(0);
+                  },
+                  child: text(
+                    "Clear all",
+                    textColor: whiteColor,
+                    fontweight: FontWeight.w600,
+                    fontSize: 12.sp,
+                  ),
+                  // backgroundColor: colorPrimary,
+                  // label: text(
+                  //   "Clear all",
+                  //   textColor: whiteColor,
+                  //   fontweight: FontWeight.w600,
+                  //   fontSize: 12.sp,
+                  // ), child: null,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -115,7 +125,7 @@ class BuildExpansionTile extends ViewModelWidget<ViewAllViewmodel> {
                   "${category!.title}",
                   textColor: !initiallyExpanded ? colorPrimary : Colors.white,
                   fontweight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 12.sp,
                 ),
               ),
             ),
@@ -144,7 +154,7 @@ class BuildExpansionTile extends ViewModelWidget<ViewAllViewmodel> {
                         //second level title
                         child: text(
                           "${parentCategory.title}",
-                          fontSize: 20,
+                          fontSize: 12.sp,
                         ),
                       ),
                     ),

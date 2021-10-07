@@ -6,15 +6,13 @@ import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/ui/screens/dashboard/homepage/homepage_repository.dart';
 import 'package:stacked/stacked.dart';
 
-class BookSliderViewModel extends BaseViewModel{
+class BookSliderViewModel extends BaseViewModel {
   HomepageRepository _homepageRepository = HomepageRepository();
   HomepageResponse? _homepageResponse;
   HomepageBannerResponse? _homepageBannerResponse;
   int selectedIndex = 0;
   int navBarIndex = 0;
   List bannerImageList = [];
-    bool isElevated = true;
-    bool showViewmore = true;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   List activeList = [];
@@ -61,4 +59,7 @@ class BookSliderViewModel extends BaseViewModel{
     changeActiveList(selectedIndex);
     notifyListeners();
   }
+
+  bool isElevated = true;
+  bool showViewmore = true;
 }

@@ -4,26 +4,15 @@ import 'package:ocean_publication/locator/locator.dart';
 import 'package:ocean_publication/ui/components/book_slider_view_model.dart';
 import 'package:ocean_publication/ui/components/cards.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
-import 'package:ocean_publication/ui/screens/bookdetail/bok_details_view_model.dart';
+
 import 'package:sizer/sizer.dart';
+import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:ocean_publication/ui/components/book_slider_view.dart';
-import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
-import 'package:ocean_publication/ui/components/imageSlider.dart';
-import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
-import 'package:ocean_publication/constants.dart';
-import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
-import 'package:ocean_publication/model/choice.dart';
-import 'package:ocean_publication/ui/components/drawer/drawerView.dart';
-import 'package:ocean_publication/ui/screens/dashboard/homepage/homepage_viewmodel.dart';
+
+
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/helpers/colors.dart';
-import 'package:ocean_publication/ui/components/cards.dart';
-import 'package:ocean_publication/ui/components/widgets.dart';
-import 'package:stacked/stacked.dart';
-import 'package:sizer/sizer.dart';
+
 
 class BooKSlider extends StatelessWidget {
   final BuildContext context;
@@ -55,69 +44,161 @@ class BooKSlider extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded( flex: 4,
-                          child: Container(
-                            width: 80.w,
-                            height: 5.h,
-                            // alignment: Alignment.center,
+                        child:  Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: FittedBox(
+                            fit: BoxFit.fitWidth,
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: model.choices.map(
-                                (e) {
-                                  return InkWell(
-                                    onTap: () {
-                                      model.onchanged(e, model.choices);
-                                      if (model.selectedIndex ==
-                                          model.choices.indexOf(e)) {
-                                      } else {}
-                                    },
-                                    child: Container(
-                                      width:
-                                          MediaQuery.of(context).size.width / 4.5,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          color: model.selectedIndex ==
-                                                  model.choices.indexOf(e)
-                                              ? colorPrimary
-                                              : whiteColor,
-                                          borderRadius: BorderRadius.circular(
-                                              MediaQuery.of(context).size.width *
-                                                  0.01),
-                                          border:
-                                              Border.all(color: colorPrimary)),
-                                      child: FittedBox(
-                                        fit: BoxFit.fitWidth,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            IconWidget(
-                                              path: e.icon ?? "",
-                                              height: 3.h,
-                                              color: model.selectedIndex ==
-                                                      model.choices.indexOf(e)
-                                                  ? whiteColor
-                                                  : colorPrimary,
+                              children: [
+                                Container(
+
+                                  width: 80.w,
+                                  height: 5.h,
+                                  alignment: Alignment.center,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: model.choices.map(
+                                      (e) {
+                                        return InkWell(
+                                          onTap: () {
+                                            model.onchanged(e, model.choices);
+                                            if (model.selectedIndex ==
+                                                model.choices.indexOf(e)) {
+                                            } else {}
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                4,
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                                color: model.selectedIndex ==
+                                                        model.choices
+                                                            .indexOf(e)
+                                                    ? colorPrimary
+                                                    : whiteColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.01),
+                                                border: Border.all(
+                                                    color: colorPrimary)),
+                                            child: FittedBox(
+                                              fit: BoxFit.fitWidth,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  IconWidget(
+                                                    path: e.icon ?? "",
+                                                    height: 3.h,
+                                                    color:
+                                                        model.selectedIndex ==
+                                                                model.choices
+                                                                    .indexOf(
+                                                                        e)
+                                                            ? whiteColor
+                                                            : colorPrimary,
+                                                  ),
+                                                  SizedBox(width: 1.h),
+
+                                                  text(
+                                                    e.title ?? "",
+                                                    fontweight:
+                                                        FontWeight.w500,
+                                                    textColor:
+                                                        model.selectedIndex ==
+                                                                model.choices
+                                                                    .indexOf(
+                                                                        e)
+                                                            ? whiteColor
+                                                            : colorPrimary,
+                                                    fontSize: 12.sp,
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                            SizedBox(width: 1.h),
-                                            text(
-                                              e.title ?? "",
-                                              fontweight: FontWeight.w500,
-                                              textColor: model.selectedIndex ==
-                                                      model.choices.indexOf(e)
-                                                  ? whiteColor
-                                                  : colorPrimary,
-                                              fontSize: 10.sp,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ).toList(),
+                                          ),
+                                        );
+                                      },
+                                    ).toList(),
+                                  ),
+                                ),
+                                // viewmoreAction(context),
+                              ],
                             ),
                           ),
+                        ),
+                          // child: Container(
+                          //   width: 80.w,
+                          //   height: 5.h,
+                          //   // alignment: Alignment.center,
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     children: model.choices.map(
+                          //       (e) {
+                          //         return InkWell(
+                          //           onTap: () {
+                          //             model.onchanged(e, model.choices);
+                          //             if (model.selectedIndex ==
+                          //                 model.choices.indexOf(e)) {
+                          //             } else {}
+                          //           },
+                          //           child: Container(
+                          //             width:
+                          //                 MediaQuery.of(context).size.width / 4.5,
+                          //             alignment: Alignment.center,
+                          //             decoration: BoxDecoration(
+                          //                 color: model.selectedIndex ==
+                          //                         model.choices.indexOf(e)
+                          //                     ? colorPrimary
+                          //                     : whiteColor,
+                          //                 borderRadius: BorderRadius.circular(
+                          //                     MediaQuery.of(context).size.width *
+                          //                         0.01),
+                          //                 border:
+                          //                     Border.all(color: colorPrimary)),
+                          //             child: FittedBox(
+                          //               fit: BoxFit.fitWidth,
+                          //               child: Row(
+                          //                 mainAxisAlignment:
+                          //                     MainAxisAlignment.spaceEvenly,
+                          //                 children: [
+                          //                   IconWidget(
+                          //                     path: e.icon ?? "",
+                          //                     height: 3.h,
+                          //                     color: model.selectedIndex ==
+                          //                             model.choices.indexOf(e)
+                          //                         ? whiteColor
+                          //                         : colorPrimary,
+                          //                   ),
+                          //                   SizedBox(width: 1.h),
+                          //                   text(
+                          //                     e.title ?? "",
+                          //                     fontweight: FontWeight.w500,
+                          //                     textColor: model.selectedIndex ==
+                          //                             model.choices.indexOf(e)
+                          //                         ? whiteColor
+                          //                         : colorPrimary,
+                          //                     fontSize: 10.sp,
+                          //                   ),
+                          //                 ],
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         );
+                          //       },
+                          //     ).toList(),
+                          //   ),
+                          // ),
                         ),
                          if (model.showViewmore)
                             viewmoreAction(

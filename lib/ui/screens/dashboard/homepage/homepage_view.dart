@@ -42,7 +42,7 @@ class HomepageView extends StatelessWidget {
                       ]
                     : [
                         Padding(
-                          padding: const EdgeInsets.only(left: 5,right: 5),
+                          padding: const EdgeInsets.only(left: 5, right: 5),
                           child: Card(
                             child: ImageSlideShows(
                               imageList: model.bannerImageList,
@@ -57,7 +57,7 @@ class HomepageView extends StatelessWidget {
                         //     child: Row(
                         //       children: [
                         //         Container(
-                                 
+
                         //           width: 80.w,
                         //           height: 5.h,
                         //           alignment: Alignment.center,

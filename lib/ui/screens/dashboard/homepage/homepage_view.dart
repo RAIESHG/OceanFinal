@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:ocean_publication/ui/components/book_slider.dart';
+import 'package:ocean_publication/ui/components/book_slider_view.dart';
 import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/components/imageSlider.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
@@ -31,188 +31,201 @@ class HomepageView extends StatelessWidget {
             bottomNavigationBar: BottomNavigationBarView(),
             backgroundColor: Color(0xffDEDBDB),
             body: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 3.h,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: model.isBusy
-                      ? [
-                          SpinKitWave(
-                            color: colorPrimary,
-                            itemCount: 8,
-                          ),
-                        ]
-                      : [
-                  
-                           ImageSlideShows(imageList: model.bannerImageList,),
-                          SizedBox(height:1.h),
-                          Padding(
-                            padding: EdgeInsets.all(5.0),
-                            child: FittedBox(
-                              fit: BoxFit.fitWidth,
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80.w,
-                                    height: 5.h,
-                                    alignment: Alignment.center,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: model.choices.map(
-                                        (e) {
-                                          return InkWell(
-                                            onTap: () {
-                                              model.onchanged(e, model.choices);
-                                              if (model.selectedIndex ==
-                                                  model.choices.indexOf(e)) {
-                                              } else {}
-                                            },
-                                            child: Container(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  4,
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                  color: model.selectedIndex ==
-                                                          model.choices
-                                                              .indexOf(e)
-                                                      ? colorPrimary
-                                                      : whiteColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.01),
-                                                  border: Border.all(
-                                                      color: colorPrimary)),
-                                              child: FittedBox(
-                                                fit: BoxFit.fitWidth,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    IconWidget(
-                                                      path: e.icon ?? "",
-                                                      height: 3.h,
-                                                      color:
-                                                          model.selectedIndex ==
-                                                                  model.choices
-                                                                      .indexOf(
-                                                                          e)
-                                                              ? whiteColor
-                                                              : colorPrimary,
-                                                    ),
-                                                    SizedBox(width: 1.h),
-                                                   
-                                                    text(
-                                                      e.title ?? "",
-                                                      fontweight:
-                                                          FontWeight.w500,
-                                                      textColor:
-                                                          model.selectedIndex ==
-                                                                  model.choices
-                                                                      .indexOf(
-                                                                          e)
-                                                              ? whiteColor
-                                                              : colorPrimary,
-                                                      fontSize: 12.sp,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ).toList(),
-                                    ),
-                                  ),
-                                  // viewmoreAction(context),
-                                ],
-                              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: model.isBusy
+                    ? [
+                        SpinKitWave(
+                          color: colorPrimary,
+                          itemCount: 8,
+                        ),
+                      ]
+                    : [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5, right: 5),
+                          child: Card(
+                            child: ImageSlideShows(
+                              imageList: model.bannerImageList,
                             ),
                           ),
-                          if (model.activeList.length > 0)
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 1.w),
-                              child: Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 2.1,
-                                child: BookSlider(
-                                  context: context,
-                                  object: model.activeList[0],
-                                ),
-                              ),
-                            ),
+                        ),
 
+                        // Padding(
+                        //   padding: EdgeInsets.all(5.0),
+                        //   child: FittedBox(
+                        //     fit: BoxFit.fitWidth,
+                        //     child: Row(
+                        //       children: [
+                        //         Container(
+
+                        //           width: 80.w,
+                        //           height: 5.h,
+                        //           alignment: Alignment.center,
+                        //           child: Row(
+                        //             mainAxisAlignment:
+                        //                 MainAxisAlignment.spaceEvenly,
+                        //             crossAxisAlignment:
+                        //                 CrossAxisAlignment.center,
+                        //             children: model.choices.map(
+                        //               (e) {
+                        //                 return InkWell(
+                        //                   onTap: () {
+                        //                     model.onchanged(e, model.choices);
+                        //                     if (model.selectedIndex ==
+                        //                         model.choices.indexOf(e)) {
+                        //                     } else {}
+                        //                   },
+                        //                   child: Container(
+                        //                     width: MediaQuery.of(context)
+                        //                             .size
+                        //                             .width /
+                        //                         4,
+                        //                     alignment: Alignment.center,
+                        //                     decoration: BoxDecoration(
+                        //                         color: model.selectedIndex ==
+                        //                                 model.choices
+                        //                                     .indexOf(e)
+                        //                             ? colorPrimary
+                        //                             : whiteColor,
+                        //                         borderRadius:
+                        //                             BorderRadius.circular(
+                        //                                 MediaQuery.of(context)
+                        //                                         .size
+                        //                                         .width *
+                        //                                     0.01),
+                        //                         border: Border.all(
+                        //                             color: colorPrimary)),
+                        //                     child: FittedBox(
+                        //                       fit: BoxFit.fitWidth,
+                        //                       child: Row(
+                        //                         mainAxisAlignment:
+                        //                             MainAxisAlignment
+                        //                                 .spaceEvenly,
+                        //                         children: [
+                        //                           IconWidget(
+                        //                             path: e.icon ?? "",
+                        //                             height: 3.h,
+                        //                             color:
+                        //                                 model.selectedIndex ==
+                        //                                         model.choices
+                        //                                             .indexOf(
+                        //                                                 e)
+                        //                                     ? whiteColor
+                        //                                     : colorPrimary,
+                        //                           ),
+                        //                           SizedBox(width: 1.h),
+
+                        //                           text(
+                        //                             e.title ?? "",
+                        //                             fontweight:
+                        //                                 FontWeight.w500,
+                        //                             textColor:
+                        //                                 model.selectedIndex ==
+                        //                                         model.choices
+                        //                                             .indexOf(
+                        //                                                 e)
+                        //                                     ? whiteColor
+                        //                                     : colorPrimary,
+                        //                             fontSize: 12.sp,
+                        //                           ),
+                        //                         ],
+                        //                       ),
+                        //                     ),
+                        //                   ),
+                        //                 );
+                        //               },
+                        //             ).toList(),
+                        //           ),
+                        //         ),
+                        //         // viewmoreAction(context),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        if (model.activeList.length > 0)
                           Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                7, model.activeList.length == 0 ? 12 : 2, 2, 2),
+                            padding: EdgeInsets.symmetric(horizontal: 1.w),
                             child: Container(
-                              height: 22.h,
-                              width: 150.w,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(authBackgroundImage),
-                                  fit: BoxFit.cover,
-                                ),
-                                color: Colors.white,
+                              height: MediaQuery.of(context).size.height / 1.8,
+                              child: BooKSlider(
+                                context: context,
+                                object: model.activeList[0],
                               ),
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.bottomCenter,
-                                    padding: EdgeInsets.only(
-                                      bottom: 15.0,
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        //
-                                      },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: whiteColor,
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        width: 50.w,
-                                        height: 11.h,
-                                        child: Center(
-                                          child: text(
-                                            'Explore Now',
-                                            textColor: colorPrimary,
-                                            fontFamily: 'Poppins',
-                                            fontSize: 20,
-                                            fontweight: FontWeight.w700,
+                            ),
+                          ),
+
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              7, model.activeList.length == 0 ? 12 : 2, 2, 2),
+                          child: Container(
+                            height: 14.h,
+                            width: 150.w,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(authBackgroundImage),
+                                fit: BoxFit.cover,
+                              ),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: 1.h),
+                                Container(
+                                    child: Text(
+                                  'We have more than thousand books.',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 12.sp),
+                                )),
+                                SizedBox(height: 2.h),
+                                Stack(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.bottomCenter,
+                                      padding: EdgeInsets.only(
+                                        bottom: 15.0,
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          //
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: whiteColor,
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                          ),
+                                          width: 50.w,
+                                          height: 6.h,
+                                          child: Center(
+                                            child: text(
+                                              'Explore Now',
+                                              textColor: colorPrimary,
+                                              fontFamily: 'Poppins',
+                                              fontSize: 20,
+                                              fontweight: FontWeight.w700,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  )
-                                ],
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        if (model.activeList.length > 1)
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5.0),
+                            child: Container(
+                              child: BooKSlider(
+                                context: context,
+                                object: model.activeList[1],
                               ),
                             ),
                           ),
-                          // 10.heightBox,
-                          if (model.activeList.length > 1)
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 5.0),
-                              child: Container(
-                                child: BookSlider(
-                                  context: context,
-                                  object: model.activeList[1],
-                                ),
-                              ),
-                            ),
-                        ],
-                ),
+                      ],
               ),
             ),
           );
@@ -231,7 +244,7 @@ class HomepageView extends StatelessWidget {
 //       width: 10,
 //       decoration: BoxDecoration(
 //         image: DecorationImage(
-//           image: 
+//           image:
 //           FadeInImage(
 //             image: NetworkImage(imgLink),
 //             // memCacheHeight: 200,

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
-import 'package:ocean_publication/ui/components/book_slider.dart';
+import 'package:ocean_publication/ui/components/book_slider_view.dart';
 import 'package:ocean_publication/ui/components/reusable_wiidgets.dart';
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/helpers/colors.dart';
@@ -85,7 +85,7 @@ class _CartViewState extends State<CheckoutView> {
                 // 15.heightBox,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: BookSlider(context: context, object: "Shop more"),
+                  child: BooKSlider(context: context, object: "Shop more"),
                 ),
                 // 10.heightBox,
               ],

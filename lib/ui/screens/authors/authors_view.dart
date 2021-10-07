@@ -11,6 +11,7 @@ import 'package:ocean_publication/ui/screens/authors/authors_viewmodel.dart';
 import 'package:ocean_publication/ui/components/elevated_stacked_image.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:sizer/sizer.dart';
 
 class AuthorsView extends StatelessWidget {
   const AuthorsView({Key? key}) : super(key: key);
@@ -22,76 +23,98 @@ class AuthorsView extends StatelessWidget {
           await vm.getAuthors();
         },
         builder: (context, model, child) {
-       
           return Scaffold(
             backgroundColor: Colors.grey.shade300,
             appBar: appBarWithSearch(context, title: 'Authors'),
-            body: AnimationLimiter(
-                child: model.authors == null
-                    ? Center(child: SpinKitWave(
-                          color: colorPrimary,
-                          itemCount: 8,
-                        ),)
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: model.authors!.data!.length,
-                        itemBuilder: (context, index) =>
-                            AnimationConfiguration.staggeredList(
-                              position: index,
-                              duration: const Duration(milliseconds: 700),
-                              child: SlideAnimation(
-                                horizontalOffset: 10,
-                                child: FadeInAnimation(
-                                  child: StackedElevatedImage(
-                                    image:
-                                        model.authors!.data![index].image ?? "",
-                                    detailsWidget: Padding(
-                                      padding: EdgeInsets.only(
-                                          // top: MediaQuery.of(context).size.width * 0.07,
-                                          // bottom: MediaQuery.of(context).size.width * 0.02,
-                                          ),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            alignment: Alignment.center,
-                                            // width: context.screenWidth * 0.4,
-                                            child: text("${model.authors!.data![index].name}",
-                                                isCentered: true,
-                                                fontweight: FontWeight.w700,
-                                                fontSize: 20
-                                                // fontSize: context.textTheme.headline6!.fontSize,
+            body: Column(
+              children: [
+                Container(
+                    height: 7.h,
+                    width: double.infinity,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "${model.authors!.data!.length} Authors",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                    )),
+                AnimationLimiter(
+                    child: model.authors == null
+                        ? Center(
+                            child: SpinKitWave(
+                              color: colorPrimary,
+                              itemCount: 8,
+                            ),
+                          )
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: model.authors!.data!.length,
+                            itemBuilder: (context, index) =>
+                                AnimationConfiguration.staggeredList(
+                                  position: index,
+                                  duration: const Duration(milliseconds: 700),
+                                  child: SlideAnimation(
+                                    horizontalOffset: 10,
+                                    child: FadeInAnimation(
+                                      child: StackedElevatedImage(
+                                        image:
+                                            model.authors!.data![index].image ??
+                                                "",
+                                        detailsWidget: Padding(
+                                          padding: EdgeInsets.only(
+                                              // top: MediaQuery.of(context).size.width * 0.07,
+                                              // bottom: MediaQuery.of(context).size.width * 0.02,
+                                              ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                alignment: Alignment.center,
+                                                // width: context.screenWidth * 0.4,
+                                                child: text(
+                                                  "${model.authors!.data![index].name}",
+                                                  isCentered: true,
+                                                  fontweight: FontWeight.w700,
+                                                  fontSize: 14.sp,
+                                                  textColor: Colors.black,
+
+                                                  // fontSize: context.textTheme.headline6!.fontSize,
                                                 ),
+                                              ),
+
+                                              ElevatedButton(
+                                                  onPressed: () {
+                                                    print("go to view profile");
+                                                    NavigationService
+                                                        navigationService =
+                                                        locator<
+                                                            NavigationService>();
+                                                    navigationService.navigateTo(
+                                                        Routes
+                                                            .authorProfileView,
+                                                        arguments:
+                                                            AuthorProfileViewArguments(
+                                                                authorData: model
+                                                                        .authors!
+                                                                        .data![
+                                                                    index]));
+                                                  },
+                                                  child: Text("View Profile"))
+                                              // 10.heightBox,
+                                            ],
                                           ),
-
-                                          ElevatedButton(onPressed: (){
-
-                                              print("go to view profile");
-                                              NavigationService
-                                                  navigationService =
-                                                  locator<NavigationService>();
-                                              navigationService.navigateTo(
-                                                  Routes.authorProfileView,
-                                                  arguments:
-                                                      AuthorProfileViewArguments(
-                                                          authorData: model
-                                                              .authors!
-                                                              .data![index]));
-
-                                                           
-                                          }, child: Text("View Profile"))
-                                          // 10.heightBox,
-                                     
-                                        ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ))
-                //
+                                ))
+                    //
 
-                ),
+                    ),
+              ],
+            ),
           );
         },
         viewModelBuilder: () => AuthorsViewmodel());

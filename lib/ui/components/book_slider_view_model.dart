@@ -4,9 +4,10 @@ import 'package:ocean_publication/model/homepageBannerResponse/homepageBannerRes
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/ui/screens/dashboard/homepage/homepage_repository.dart';
+import 'package:ocean_publication/ui/screens/dashboard/homepage/homepage_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
-class BookSliderViewModel extends BaseViewModel {
+class BookSliderViewModel extends HomepageViewmodel {
   HomepageRepository _homepageRepository = HomepageRepository();
   HomepageResponse? _homepageResponse;
   HomepageBannerResponse? _homepageBannerResponse;
@@ -50,7 +51,7 @@ class BookSliderViewModel extends BaseViewModel {
     } else {
       activeList.addAll([homepageData!.packages]);
     }
-    // notifyListeners();
+    notifyListeners();
   }
 
   void onchanged(var e, var choices) {
@@ -60,6 +61,5 @@ class BookSliderViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  bool isElevated = true;
-  bool showViewmore = true;
+
 }

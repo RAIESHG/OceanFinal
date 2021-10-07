@@ -56,6 +56,7 @@ class DetailsIconAndText extends StatelessWidget {
                 maxLine: 2,
                 fontweight: FontWeight.w300,
                 fontSize: 20,
+                textColor: blackColor
               ),
             ),
           ],

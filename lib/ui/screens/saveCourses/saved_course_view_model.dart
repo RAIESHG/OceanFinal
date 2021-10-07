@@ -15,7 +15,9 @@ class SavedCourseViewModel extends BaseViewModel {
   Future<void> getSavedCourses() async {
     setBusyForObject("object", true);
     var response = await getRequest("/get_save_courses");
-    savedCourseData = savedCourseResponseFromJson(response.body).data;
+    json.decode(response.body)["status"] == true
+        ? savedCourseData = savedCourseResponseFromJson(response.body).data
+        : print("");
     setBusyForObject("object", false);
     notifyListeners();
   }

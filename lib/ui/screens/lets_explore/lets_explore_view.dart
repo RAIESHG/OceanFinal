@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 import 'package:ocean_publication/ui/screens/lets_explore/lets_explore_viewmodel.dart';
 import 'package:ocean_publication/helpers/colors.dart';
 import 'package:ocean_publication/ui/components/cards.dart';
@@ -21,7 +22,7 @@ class LetsExploreView extends StatelessWidget {
           return SafeArea(
             child: Scaffold(
               backgroundColor: Colors.white,
-              // appBar: appBarWithSearch(context, title: "Ocean Publication"),
+              appBar: appBarWithSearch(context, title: "Ocean Publication"),
               body:
                   // 10.heightBox,
                   model.busy("object") == true

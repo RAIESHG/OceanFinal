@@ -26,8 +26,9 @@ class SavedCourseView extends StatelessWidget {
                   ? SpinKitWave(
                       color: colorPrimary,
                       itemCount: 8,
-                    )
-                  : Container(
+                    ) :
+                    model.savedCourseData == null ? Center(child: Text("No Saved Course Available")) :
+                   Container(
                       height: screenheight * 1,
                       width: screenwidth * 1,
                       child: ListView(

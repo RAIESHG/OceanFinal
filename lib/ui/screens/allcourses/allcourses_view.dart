@@ -41,7 +41,10 @@ class AllCoursesView extends StatelessWidget {
             //     ),
             //   ),
             // ),
-            body: model.busy("object") == true
+            body:
+                        model.courses.length == 0 ? Center(child: Text("No Course Available")) :
+
+             model.busy("object") == true
                 ? CircularProgressIndicator()
                 : Flex(
                     direction: Axis.vertical,
@@ -76,7 +79,8 @@ class AllCoursesView extends StatelessWidget {
                       ),
                     
                       Flexible(
-                        child: AllCourseCard(
+                        child: 
+                        AllCourseCard(
                           object: model.courses,
                         ),
                       ),

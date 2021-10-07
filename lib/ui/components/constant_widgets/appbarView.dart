@@ -55,7 +55,7 @@ AppBar appBarWithSearch(BuildContext context,
                 //apply search
                 print("search");
               },
-              child: Icon(Icons.search)),
+              child: Icon(Icons.person_pin)),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0),

@@ -13,11 +13,10 @@ class ImageSlideShows extends StatelessWidget {
     for (int i = 0; i < imageList.length; i++) {
       if (imageList[i].contains('assets')) {
         imgList.add(
-          Container(
-            child: Image.asset(
-              '${imageList[i]}',
-              fit: BoxFit.contain,
-            ),
+          Image.asset(
+            '${imageList[i]}',
+            fit: BoxFit.fill,
+            // fit: BoxFit.fill,
           ),
         );
         // } else if (imageList.contains("imageserver")) {
@@ -34,10 +33,10 @@ class ImageSlideShows extends StatelessWidget {
     imgList.shuffle();
     return CarouselSlider(
         options: CarouselOptions(
-          viewportFraction: 0.6,
-          height: 200.0,
+          height: 220,
+          viewportFraction: 1,
+          initialPage: 0,
           enableInfiniteScroll: true,
-          initialPage: 2,
           reverse: false,
           autoPlay: true,
           autoPlayInterval: Duration(seconds: 3),

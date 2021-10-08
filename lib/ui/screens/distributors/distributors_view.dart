@@ -38,10 +38,11 @@ class DistributorView extends StatelessWidget {
                           width: double.infinity,
                           color: Colors.white,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
+                            padding: const EdgeInsets.all(10),
+                            child: text(
                               "${model.distributorData!.length} Distributors",
-                              style: Theme.of(context).textTheme.bodyText1,
+                              textColor: Colors.grey,
+                              fontSize: 13.sp,
                             ),
                           )),
                       Expanded(
@@ -73,7 +74,8 @@ class DistributorView extends StatelessWidget {
                                               "${model.distributorData![index].name}",
                                               isCentered: false,
                                               fontweight: FontWeight.w600,
-                                              fontSize: 25.sp,
+                                              fontSize: 18.sp,
+                                              textColor: Colors.black,
                                             ),
                                             SizedBox(
                                               height: 1.h,

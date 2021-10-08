@@ -4,7 +4,7 @@ import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigat
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 import 'package:ocean_publication/ui/components/reusable_wiidgets.dart';
 import 'package:ocean_publication/helpers/colors.dart';
-import 'package:ocean_publication/ui/components/elevated_stacked_image.dart';
+
 import 'package:ocean_publication/ui/components/widgets.dart';
 import 'package:ocean_publication/ui/screens/profile/view_profile/profile_viewmodel.dart';
 import 'package:sizer/sizer.dart';
@@ -21,8 +21,9 @@ class ProfileView extends StatelessWidget {
         builder: (context, model, child) {
           return SafeArea(
             child: Scaffold(
-              appBar: appBarWithSearch(context),
               bottomNavigationBar: BottomNavigationBarView(),
+              appBar: appBarWithSearch(context),
+
               backgroundColor: Colors.grey.shade300,
               // appBar: appBarWithSearch(context),
               body: model.isBusy
@@ -138,22 +139,23 @@ class ProfileView extends StatelessWidget {
                           left: 20,
                           child: Center(
                             child: Container(
-                                constraints: BoxConstraints(
-                                  maxWidth: 225.0,
-                                  minWidth: 30.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: FadeInImage(
-                                    image: NetworkImage(model.item!.image!),
-                                    placeholder: AssetImage(
-                                      "assets/icons/placeholder.png",
-                                    ),
+                              constraints: BoxConstraints(
+                                maxWidth: 225.0,
+                                minWidth: 30.0,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: FadeInImage(
+                                  image: NetworkImage(model.item!.image!),
+                                  placeholder: AssetImage(
+                                    "assets/icons/placeholder.png",
                                   ),
-                                ),),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],

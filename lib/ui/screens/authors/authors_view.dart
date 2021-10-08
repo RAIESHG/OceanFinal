@@ -29,14 +29,15 @@ class AuthorsView extends StatelessWidget {
             body: Column(
               children: [
                 Container(
-                    height: 7.h,
+                    height: 8.h,
                     width: double.infinity,
                     color: Colors.white,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
+                      padding: const EdgeInsets.all(10),
+                      child: text(
                         "${model.authors!.data!.length} Authors",
-                        style: Theme.of(context).textTheme.bodyText1,
+                        textColor: Colors.grey,
+                        fontSize: 13.sp,
                       ),
                     )),
                 AnimationLimiter(

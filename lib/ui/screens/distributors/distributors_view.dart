@@ -26,87 +26,100 @@ class DistributorView extends StatelessWidget {
           return Scaffold(
             backgroundColor: Colors.grey.shade300,
             appBar: appBarWithSearch(context),
-            body: model.isBusy
-                ? SpinKitWave(
-                    itemCount: 8,
-                    color: colorPrimary,
-                  )
-                : AnimationLimiter(
-                    child: ListView.builder(
-                      // shrinkWrap: true,
-                      itemCount: model.distributorData!.length,
-                      //
-                      itemBuilder: (context, index) {
-                        return AnimationConfiguration.staggeredList(
-                          position: index,
-                          duration: const Duration(milliseconds: 700),
-                          child: SlideAnimation(
-                            horizontalOffset: 20,
-                            child: FadeInAnimation(
-                              child: StackedElevatedImage(
-                                detailsWidget: FittedBox(
-                                  fit: BoxFit.contain,
-                                  child: Container(
-                                    // color: Colors.red,
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 3.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      //
-                                      children: [
-                                        //
-                                        text(
-                                          "${model.distributorData![index].name}",
-                                          isCentered: false,
-                                          fontweight: FontWeight.w600,
-                                          fontSize: 25.sp,
-                                        ),
-                                        SizedBox(
-                                          height: 1.h,
-                                        ),
+            body: Column(
+              children: [
+                Container(
+                    height: 7.h,
+                    width: double.infinity,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "${model.distributorData!.length} Distributors",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                    )),
+                Expanded(
+                  child: model.isBusy
+                      ? SpinKitWave(
+                          itemCount: 8,
+                          color: colorPrimary,
+                        )
+                      : AnimationLimiter(
+                          child: ListView.builder(
+                            // shrinkWrap: true,
+                            itemCount: model.distributorData!.length,
+                            //
+                            itemBuilder: (context, index) {
+                              return AnimationConfiguration.staggeredList(
+                                position: index,
+                                duration: const Duration(milliseconds: 700),
+                                child: SlideAnimation(
+                                  horizontalOffset: 10,
+                                  child: FadeInAnimation(
+                                    child: StackedElevatedImage(
+                                      detailsWidget: FittedBox(
+                                        fit: BoxFit.contain,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          //
+                                          children: [
+                                            //
+                                            text(
+                                              "${model.distributorData![index].name}",
+                                              isCentered: false,
+                                              fontweight: FontWeight.w600,
+                                              fontSize: 25.sp,
+                                            ),
+                                            SizedBox(
+                                              height: 1.h,
+                                            ),
 
-                                        DetailsIconAndText(
-                                          title:
-                                              "${model.distributorData![index].contactPerson}",
-                                          icon: Icons.person,
-                                          
+                                            DetailsIconAndText(
+                                              title:
+                                                  "${model.distributorData![index].contactPerson}",
+                                              icon: Icons.person,
+                                              
+                                            ),
+                                            SizedBox(
+                                              height: 2.h,
+                                            ),
+                                            DetailsIconAndText(
+                                              title:
+                                                  "${model.distributorData![index].address}",
+                                              icon: Icons.location_on,
+                                            ),
+                                            SizedBox(
+                                              height: 2.h,
+                                            ),
+                                            DetailsIconAndText(
+                                              title:
+                                                  "${model.distributorData![index].phoneNumber}",
+                                              icon: Icons.phone,
+                                              isPhone: true,
+                                            ),
+                                            SizedBox(
+                                              height: 2.h,
+                                            ),
+                                          ],
                                         ),
-                                        SizedBox(
-                                          height: 2.h,
-                                        ),
-                                        DetailsIconAndText(
-                                          title:
-                                              "${model.distributorData![index].address}",
-                                          icon: Icons.location_on,
-                                        ),
-                                        SizedBox(
-                                          height: 2.h,
-                                        ),
-                                        DetailsIconAndText(
-                                          title:
-                                              "${model.distributorData![index].phoneNumber}",
-                                          icon: Icons.phone,
-                                          isPhone: true,
-                                        ),
-                                        SizedBox(
-                                          height: 2.h,
-                                        ),
-                                      ],
+                                      ),
+                                      image:
+                                          model.distributorData![index].image!,
                                     ),
                                   ),
                                 ),
-                                image: model.distributorData![index].image!,
-                              ),
-                            ),
+                              );
+                            },
                           ),
-                        );
-                      },
-                    ),
-                  ),
+                        ),
+                ),
+              ],
+            ),
           );
         },
         viewModelBuilder: () => DistributerViewmodel());

@@ -28,7 +28,7 @@ class StackedElevatedImage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.24,
+        height: MediaQuery.of(context).size.height * 0.2,
         child: Stack(
           children: [
             Positioned(
@@ -40,7 +40,7 @@ class StackedElevatedImage extends StatelessWidget {
                 padding: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.2),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.15,
+                  height: MediaQuery.of(context).size.height * 0.01,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
                         MediaQuery.of(context).size.width * 0.015),
@@ -48,7 +48,7 @@ class StackedElevatedImage extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.25),
+                        left: MediaQuery.of(context).size.width * 0.02),
                     child: detailsWidget,
                   ),
                 ),

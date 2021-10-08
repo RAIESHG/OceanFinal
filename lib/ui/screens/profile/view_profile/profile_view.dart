@@ -128,7 +128,7 @@ class ProfileView extends StatelessWidget {
                           left: 20,
                           child: Center(
                             child: Container(
-                                height: 20.h,
+                                height: 25.h,
                                 width: 35.w,
                                 child: FadeInImage(
                                   image: NetworkImage(model.item!.image!),

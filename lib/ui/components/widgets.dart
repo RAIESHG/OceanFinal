@@ -73,30 +73,31 @@ Widget textField({
         )
       ],
       Material(
-        color: Colors.transparent,
+       color: Colors.white,
         child: TextFormField(
+          
           controller: controller,
           obscureText: obscureText,
-          cursorColor: cursorColor ?? colorPrimary,
+          // cursorColor: cursorColor ?? colorPrimary,
           maxLength: maxLength,
           maxLines: maxLines,
           // autofillHints: [
           //   AutofillHints.email,
           // ],
-          style: TextStyle(color: colorPrimary, fontSize: 12.0),
+          style: TextStyle(color: colorPrimary, fontSize: 20.0, fontWeight: FontWeight.bold),
           decoration: InputDecoration(
-            hintStyle: TextStyle(fontSize: 12.0),
+            hintStyle: TextStyle(fontSize: 12.0,color: colorPrimary),
             prefixIcon: prefixIcon,
             filled: true,
-            fillColor: fillColor,
+            // fillColor: fillColor,
             contentPadding: EdgeInsets.only(left: 15.0, top: 5.0, bottom: 5.0),
             hintText: "$hintText",
-            enabledBorder:
-                showBorder ? outlineInputBorder(radius: borderRadius) : null,
-            border:
-                showBorder ? outlineInputBorder(radius: borderRadius) : null,
-            focusedBorder:
-                showBorder ? outlineInputBorder(radius: borderRadius) : null,
+            // enabledBorder:
+            //     showBorder ? outlineInputBorder(radius: borderRadius) : null,
+            // border:
+            //     showBorder ? outlineInputBorder(radius: borderRadius) : null,
+            // focusedBorder:
+            //     showBorder ? outlineInputBorder(radius: borderRadius) : null,
           ),
           onChanged: (value) => onChanged!(value),
         ),

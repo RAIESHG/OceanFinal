@@ -42,6 +42,7 @@ class DistributorView extends StatelessWidget {
                             child: text(
                               "${model.distributorData!.length} Distributors",
                               textColor: Colors.grey,
+                              fontweight: FontWeight.bold,
                               fontSize: 13.sp,
                             ),
                           )),

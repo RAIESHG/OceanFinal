@@ -85,6 +85,13 @@ class AuthorsView extends StatelessWidget {
                                               ),
 
                                               ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    primary:
+                                                        colorPrimary, // background
+                                                    onPrimary: Colors
+                                                        .white, // foreground
+                                                  ),
                                                   onPressed: () {
                                                     print("go to view profile");
                                                     NavigationService

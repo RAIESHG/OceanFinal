@@ -6,6 +6,7 @@ import 'package:ocean_publication/helpers/colors.dart';
 import 'package:ocean_publication/ui/components/cards.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
 import 'package:stacked/stacked.dart';
+import 'package:sizer/sizer.dart';
 
 class LetsExploreView extends StatelessWidget {
   final String type;
@@ -44,14 +45,15 @@ class LetsExploreView extends StatelessWidget {
                                           ? "Hello ${model.user!.firstName ?? ""}"
                                           : "",
                                       textColor: greyColor,
-                                      fontSize: 10,
+                                      fontSize: 13.sp,
                                       fontweight: FontWeight.w700,
                                     ),
-                                    // 5.heightBox,
+                                    SizedBox(height: 2.h),
+                                 
                                     text(
                                       "Let's Explore",
                                       textColor: colorPrimary,
-                                      fontSize: 20,
+                                      fontSize: 13.sp,
                                       fontweight: FontWeight.w700,
                                     ),
                                   ],
@@ -86,7 +88,7 @@ class LetsExploreView extends StatelessWidget {
                                                   text(
                                                     "${model.letsExploreData!.items![index].heading ?? ""}",
                                                     fontweight: FontWeight.w900,
-                                                    fontSize: 20
+                                                     fontSize: 13.sp,
                                                     // fontSize: 1,
                                                   ),
                                                   // if (showViewmore)

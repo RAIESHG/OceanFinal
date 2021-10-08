@@ -109,7 +109,7 @@ Container detailsDisplayWidget(BuildContext context, Widget detail,
     {Color? color, double? height, double? width}) {
   return Container(
     decoration: BoxDecoration(
-      color: color ?? Colors.white,
+      color: color ?? Colors.grey,
       border: Border(
         bottom: BorderSide(
           color: colorPrimary,

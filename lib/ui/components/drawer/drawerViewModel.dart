@@ -42,14 +42,10 @@ class DrawerViewModel extends BaseViewModel {
     LetsExploreView(type: "book"),
     LetsExploreView(type: "video"),
     LetsExploreView(type: "package"),
-    // AuthorsView(),
-
     DistributorView(),
     AllCoursesView(),
     ProfileView(),
-    // NotificationView(),
-    // UserProfileView(),
-    // AllCoursesView(),
+   
     AuthorsView(),
     HistoryView(),
     DashBoardView(),
@@ -86,7 +82,6 @@ class DrawerViewModel extends BaseViewModel {
 
   Future<void> onModelReady() async {
     checkLogin = await await sharedPreferencesService.loginCheck();
-    print("YEIIIIIIIIIIIIIIIIIIIIII hooooo${checkLogin}");
     notifyListeners();
   }
 

@@ -63,29 +63,26 @@ class StackedElevatedImage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.34,
                   height: MediaQuery.of(context).size.height * 0.18,
                   color: Colors.white,
-                  child: 
-                  
-                  FadeInImage(
-                    image:NetworkImage("$image"),
-            // image: NetworkImage(image!.contains('https://oceanpublication.com.np/')
-            //                 ? image ?? ""
-            //                 : "https://oceanpublication.com.np/$image",),
-            // memCacheHeight: 200,
-            // imageUrl: "$imgLink",
-            placeholder: AssetImage("assets/icons/placeholder.png"),
-            //  (context, url) => SpinKitWave(
-            //   color: colorPrimary,
-            //   itemCount: 8,
-            // ),
-            // errorWidget: (context, error, stackTrace) {
-            //   return SpinKitWave(
-            //     color: colorPrimary,
-            //     itemCount: 8,
-            //   );
-            // },
-            // fit: BoxFit.fill,
-          ),
-                 
+                  child: FadeInImage(
+                    image: NetworkImage("$image"),
+                    // image: NetworkImage(image!.contains('https://oceanpublication.com.np/')
+                    //                 ? image ?? ""
+                    //                 : "https://oceanpublication.com.np/$image",),
+                    // memCacheHeight: 200,
+                    // imageUrl: "$imgLink",
+                    placeholder: AssetImage("assets/icons/placeholder.png"),
+                    //  (context, url) => SpinKitWave(
+                    //   color: colorPrimary,
+                    //   itemCount: 8,
+                    // ),
+                    // errorWidget: (context, error, stackTrace) {
+                    //   return SpinKitWave(
+                    //     color: colorPrimary,
+                    //     itemCount: 8,
+                    //   );
+                    // },
+                    // fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
@@ -133,28 +130,27 @@ class StackedElevatedImage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.34,
                 height: MediaQuery.of(context).size.height * 0.18,
                 color: Colors.white,
-                child: 
-                
-                    FadeInImage(
-            image: NetworkImage(image!.contains('https://oceanpublication.com.np/')
-                      ? image ?? ""
-                      : "https://oceanpublication.com.np/$image",),
-            // memCacheHeight: 200,
-            // imageUrl: "$imgLink",
-            placeholder: AssetImage("assets/icons/placeholder.png"),
-            //  (context, url) => SpinKitWave(
-            //   color: colorPrimary,
-            //   itemCount: 8,
-            // ),
-            // errorWidget: (context, error, stackTrace) {
-            //   return SpinKitWave(
-            //     color: colorPrimary,
-            //     itemCount: 8,
-            //   );
-            // },
-            // fit: BoxFit.fill,
-          ),
-                
+                child: FadeInImage(
+                  image: NetworkImage(
+                    image!.contains('https://oceanpublication.com.np/')
+                        ? image ?? ""
+                        : "https://oceanpublication.com.np/$image",
+                  ),
+                  // memCacheHeight: 200,
+                  // imageUrl: "$imgLink",
+                  placeholder: AssetImage("assets/icons/placeholder.png"),
+                  //  (context, url) => SpinKitWave(
+                  //   color: colorPrimary,
+                  //   itemCount: 8,
+                  // ),
+                  // errorWidget: (context, error, stackTrace) {
+                  //   return SpinKitWave(
+                  //     color: colorPrimary,
+                  //     itemCount: 8,
+                  //   );
+                  // },
+                  // fit: BoxFit.fill,
+                ),
               ),
             ),
           ),
@@ -255,6 +251,22 @@ class BookDetailsWidgetForElevatedDisplay extends StatelessWidget {
             Row(
               children: [
                 //
+          
+
+                ActionButton(
+                  title: "View",
+                  color: Colors.orange,
+                  // width: context.screenWidth * 0.2,
+                  onTapped: () async {
+                    NavigationService navigationService =
+                        locator<NavigationService>();
+                    navigationService.navigateTo(Routes.checkoutView,
+                        arguments: CheckoutViewArguments(item: item));
+                  },
+                ),
+                SizedBox(
+                  width: 2.w,
+                ),
                 ActionButton(
                   title: "Add to cart",
                   color: Colors.red,
@@ -265,20 +277,6 @@ class BookDetailsWidgetForElevatedDisplay extends StatelessWidget {
                     NavigationService navigationService =
                         locator<NavigationService>();
                     navigationService.navigateTo(Routes.cartView);
-                  },
-                ),
-                SizedBox(
-                  width: 2.w,
-                ),
-                ActionButton(
-                  title: "Buy Now",
-                  color: Colors.orange,
-                  // width: context.screenWidth * 0.2,
-                  onTapped: () async {
-                    NavigationService navigationService =
-                        locator<NavigationService>();
-                    navigationService.navigateTo(Routes.checkoutView,
-                        arguments: CheckoutViewArguments(item: item));
                   },
                 ),
               ],

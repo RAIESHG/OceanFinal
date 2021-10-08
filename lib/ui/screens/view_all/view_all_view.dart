@@ -54,7 +54,7 @@ class ViewAllView extends StatelessWidget {
                       child: Row(
                         children: [
                           Icon(
-                            Icons.filter,
+                            Icons.filter_alt,
                             color: colorPrimary,
                           ),
                           text(

@@ -153,7 +153,7 @@ class ProfileView extends StatelessWidget {
                                       "assets/icons/placeholder.png",
                                     ),
                                   ),
-                                )),
+                                ),),
                           ),
                         ),
                       ],

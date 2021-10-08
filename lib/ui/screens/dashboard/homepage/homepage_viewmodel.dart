@@ -59,4 +59,7 @@ class HomepageViewmodel extends BaseViewModel {
     changeActiveList(selectedIndex);
     notifyListeners();
   }
+
+    bool isElevated = true;
+  bool showViewmore = true;
 }

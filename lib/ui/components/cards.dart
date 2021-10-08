@@ -54,19 +54,20 @@ class BookCard extends StatelessWidget {
               // SizedBox(
               //   height: MediaQuery.of(context).size.height * 0.01,
               // ),
-
-              Container(
-                width: 20.w,
-                margin: const EdgeInsets.only(top: 5.0),
-                child: text(
-                  object.author == null ? "" : object.author,
-                  maxLine: 1,
-                  textColor: Colors.grey,
-                  fontweight: FontWeight.w600,
-                  isCentered: true,
-                  fontSize: 10.sp,
-                ),
-              ),
+              //TODO: Author needed
+              //  object.author == null ? 
+              // Container(
+              //   width: 20.w,
+              //   margin: const EdgeInsets.only(top: 5.0),
+              //   child: text(
+              //     object.author,
+              //     maxLine: 1,
+              //     textColor: Colors.grey,
+              //     fontweight: FontWeight.w600,
+              //     isCentered: true,
+              //     fontSize: 10.sp,
+              //   ),
+              // ) : Container(),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
               ),

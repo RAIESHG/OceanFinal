@@ -26,10 +26,12 @@ class ProfileView extends StatelessWidget {
               backgroundColor: Colors.grey.shade300,
               // appBar: appBarWithSearch(context),
               body: model.isBusy
-                  ? Center(child: SpinKitWave(
-                          color: colorPrimary,
-                          itemCount: 8,
-                        ),)
+                  ? Center(
+                      child: SpinKitWave(
+                        color: colorPrimary,
+                        itemCount: 8,
+                      ),
+                    )
                   : Stack(
                       children: [
                         Padding(
@@ -50,7 +52,7 @@ class ProfileView extends StatelessWidget {
                                       SizedBox(
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                0.09,
+                                                0.15,
                                       ),
                                       text(
                                         "${model.item!.firstName}",
@@ -64,10 +66,18 @@ class ProfileView extends StatelessWidget {
                                                 0.02,
                                       ),
                                       ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          primary: colorPrimary, // background
+                                          onPrimary: Colors.white, // foreground
+                                        ),
                                         onPressed: () {
                                           model.navigatetoeditProfile();
                                         },
-                                        child: Text("Edit Profile"),
+                                        child: Text(
+                                          "Edit Profile",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                       SizedBox(
                                         height:
@@ -80,7 +90,7 @@ class ProfileView extends StatelessWidget {
                                             "Contact Information",
                                             textColor: whiteColor,
                                             fontSize: 20,
-                                            fontweight: FontWeight.w600,
+                                            fontweight: FontWeight.w900,
                                           ),
                                           color: colorPrimary,
                                           height: 7.h,
@@ -90,7 +100,7 @@ class ProfileView extends StatelessWidget {
                                           DetailsIconAndText(
                                             title:
                                                 model.item!.firstName ?? "N/a",
-                                            icon: Icons.person,
+                                            icon: Icons.person_outlined,
                                           ),
                                           height: 7.h,
                                           width: 70.w),
@@ -98,7 +108,7 @@ class ProfileView extends StatelessWidget {
                                           context,
                                           DetailsIconAndText(
                                             title: model.item!.email ?? "N/a",
-                                            icon: Icons.email,
+                                            icon: Icons.email_outlined,
                                           ),
                                           height: 7.h,
                                           width: 70.w),
@@ -106,7 +116,7 @@ class ProfileView extends StatelessWidget {
                                           context,
                                           DetailsIconAndText(
                                             title: model.item!.phone ?? "N/a",
-                                            icon: Icons.phone,
+                                            icon: Icons.phone_outlined,
                                           ),
                                           height: 7.h,
                                           width: 70.w),
@@ -128,12 +138,21 @@ class ProfileView extends StatelessWidget {
                           left: 20,
                           child: Center(
                             child: Container(
-                                height: 25.h,
-                                width: 35.w,
-                                child: FadeInImage(
-                                  image: NetworkImage(model.item!.image!),
-                                  placeholder: AssetImage(
-                                      "assets/icons/placeholder.png"),
+                                constraints: BoxConstraints(
+                                  maxWidth: 225.0,
+                                  minWidth: 30.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: FadeInImage(
+                                    image: NetworkImage(model.item!.image!),
+                                    placeholder: AssetImage(
+                                      "assets/icons/placeholder.png",
+                                    ),
+                                  ),
                                 )),
                           ),
                         ),

@@ -4,6 +4,7 @@ import 'package:ocean_publication/app/app.router.dart';
 import 'package:ocean_publication/locator/locator.dart';
 import 'package:ocean_publication/model/authors/authors.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
+import 'package:ocean_publication/model/viewAllResponse/view_all_packageResponse.dart';
 import 'package:ocean_publication/ui/screens/authors/author_profile_view.dart';
 import 'package:ocean_publication/ui/screens/cart/cart_view.dart';
 import 'package:ocean_publication/ui/screens/cart/cart_viewmodel.dart';
@@ -220,7 +221,7 @@ class BookDetailsWidgetForElevatedDisplay extends StatelessWidget {
               height: 2.h,
             ),
             text(
-              item is PackageData ? "" : item.author,
+              item is PackageDatum ? "" : item.author,
               textColor: Colors.grey,
               fontweight: FontWeight.w300,
               fontSize: 14.sp,

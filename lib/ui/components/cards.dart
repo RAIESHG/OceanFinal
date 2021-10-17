@@ -98,7 +98,7 @@ class BookCard extends StatelessWidget {
                       child: text(
                         // "Rs 500",
                         // TODO: REVIEW change offerprice
-                        "${object.offerPrice == 0 ? "" : object.offerPrice ?? object.price == 0 ? "" : object.price}",
+                        "${object.offerPrice == 0 ? "" : object.offerPrice}",
                         textColor: Colors.green,
                         isCentered: true,
                         fontweight: FontWeight.w500,

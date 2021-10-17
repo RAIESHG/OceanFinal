@@ -39,17 +39,21 @@ class StackedElevatedImage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.168,
                 padding: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.2),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.015),
-                    color: Colors.white,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.02),
-                    child: detailsWidget,
+                child: Card(
+                  elevation: 5,
+                                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                    decoration: BoxDecoration(
+                      
+                      borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.015),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.02),
+                      child: detailsWidget,
+                    ),
                   ),
                 ),
               ),

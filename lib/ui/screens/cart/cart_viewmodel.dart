@@ -9,6 +9,8 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class CartViewModel extends BaseViewModel {
+  num totalquantities = 0;
+  num totalPrice = 0;
   SnackbarService snackbarService = locator<SnackbarService>();
   NavigationService navigationService = locator<NavigationService>();
   List<CartItem> cartItems = [];
@@ -17,6 +19,7 @@ class CartViewModel extends BaseViewModel {
     //
     List<CartItem> results = await cartService.getFromDB();
     cartItems = results;
+    refreshSummary();
     notifyListeners();
   }
 
@@ -24,16 +27,19 @@ class CartViewModel extends BaseViewModel {
     print("removed");
     cartItems.removeAt(index!);
     await cartService.deleteFromDB(id!);
+    refreshSummary();
     notifyListeners();
   }
 
   void addQuantity(int index) {
     cartItems[index].quantity++;
+    refreshSummary();
     notifyListeners();
   }
 
   void decreaseQuantity(int index) {
     cartItems[index].quantity--;
+    refreshSummary();
     notifyListeners();
   }
 
@@ -57,12 +63,24 @@ class CartViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  refreshSummary() {
+    totalquantities = 0;
+    totalPrice = 0;
+    cartItems.forEach((element) {
+      totalquantities += element.quantity!;
+      totalPrice += (element.price * element.quantity)!;
+    });
+
+    notifyListeners();
+  }
+
   completeBuy() async {
     List<CartItem> results = await cartService.getFromDB();
     List<Map> cartList = [];
     print(cartItems.length);
     for (int i = 0; i < results.length; i++) {
-      cartList.add({"id": results[i].id, "name": results[i].type!.toLowerCase()});
+      cartList
+          .add({"id": results[i].id, "name": results[i].type!.toLowerCase()});
     }
     setBusyForObject("object", true);
     // await getUser();
@@ -86,8 +104,6 @@ class CartViewModel extends BaseViewModel {
     notifyListeners();
   }
 }
-
-
 
 CartItem cartItemFromMap(String str) => CartItem.fromMap(json.decode(str));
 

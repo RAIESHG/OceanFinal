@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:ocean_publication/helpers/colors.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
+import 'package:ocean_publication/ui/components/widgets.dart';
 import 'package:ocean_publication/ui/screens/dashboard/dashboard_viewmodel.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stacked/stacked.dart';
@@ -33,15 +34,19 @@ class DashBoardView extends StatelessWidget {
                           )
                         :Column(
                   children: [
-                    Container(
-                        height: 7.h,
-                        color: Colors.white,
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('Dashboard',
-                              style: Theme.of(context).textTheme.headline6),
-                        )),
+                     Container(
+                          height: 7.h,
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: text(
+                              "Dashboard",
+                              textColor: Colors.grey,
+                              fontweight: FontWeight.bold,
+                              fontSize: 13.sp,
+                            ),
+                          )),
                     SizedBox(
                       height: 3.h,
                     ),
@@ -66,6 +71,7 @@ class DashBoardView extends StatelessWidget {
                               color: Colors.white),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 '${model.dashBoardData!.totalSaveCourse ?? ""}',
@@ -94,6 +100,8 @@ class DashBoardView extends StatelessWidget {
                               border: Border.all(color: Colors.blue),
                               color: Colors.white),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+
                             children: [
                               Text(
                                   '${model.dashBoardData!.totalPurchaseCourse ?? ""}',
@@ -175,8 +183,6 @@ class DashBoardView extends StatelessWidget {
                                     },
                                   ),
                               ),
-                       
-                      
                         ],
                       ),
                     ),

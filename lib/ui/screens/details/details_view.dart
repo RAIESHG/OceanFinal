@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
-import 'package:ocean_publication/ui/screens/cart/cart_view.dart';
-import 'package:ocean_publication/ui/screens/cart/cart_viewmodel.dart';
-import 'package:ocean_publication/ui/screens/checkout/checkout_view.dart';
 import 'package:ocean_publication/ui/screens/details/detailsViewModel.dart';
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/helpers/colors.dart';
@@ -47,7 +44,6 @@ class DetailsObjView extends StatelessWidget {
                               ),
                               height: 25.h,
                               width: 25.w,
-
                               child: Networkimage(
                                   url: object.image ?? "", fit: BoxFit.cover),
                             ),
@@ -78,7 +74,7 @@ class DetailsObjView extends StatelessWidget {
                               ),
                               SizedBox(height: 1.h),
                               text(
-                                "MRP: ${object.price ?? "--"}",
+                                "MRP: ${object.price == 0 ? "" : object.price ?? "--"}",
                                 isCentered: true,
                                 textColor: blackColor,
 
@@ -98,7 +94,7 @@ class DetailsObjView extends StatelessWidget {
                                     fontSize: 12.sp,
                                   ),
                                   text(
-                                    "${object.offerPrice ?? ""}",
+                                    "${object.offerPrice == 0 ? "" : object.offerPrice ?? ""}",
                                     textColor: blackColor,
                                     isCentered: true,
                                     maxLine: 1,
@@ -125,43 +121,44 @@ class DetailsObjView extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   //
-                                  model.busy("save") == true ? CircularProgressIndicator() :
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    child: InkWell(
-                                      onTap: () {
-                                        model.saveCourse(
-                                            courseId: object.id.toString(),
-                                            bookName: object.title!);
-                                      },
-                                      child: Container(
-                                        height: 35.0,
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                4.5,
-                                        padding: EdgeInsets.all(2.0),
-                                        color: Colors.red,
-                                        child: 
-                                        
-                                        Center(
-                                          child: text(
-                                            "Save",
-                                            textColor: whiteColor,
-                                            isCentered: true,
-                                            // maxLine: 1,
-                                            height: 1.0,
-                                            fontweight: FontWeight.w500,
+                                  model.busy("save") == true
+                                      ? CircularProgressIndicator()
+                                      : ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                          child: InkWell(
+                                            onTap: () {
+                                              model.saveCourse(
+                                                  courseId:
+                                                      object.id.toString(),
+                                                  bookName: object.title!);
+                                            },
+                                            child: Container(
+                                              height: 35.0,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  4.5,
+                                              padding: EdgeInsets.all(2.0),
+                                              color: Colors.red,
+                                              child: Center(
+                                                child: text(
+                                                  "Save",
+                                                  textColor: whiteColor,
+                                                  isCentered: true,
+                                                  // maxLine: 1,
+                                                  height: 1.0,
+                                                  fontweight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
 
                                   SizedBox(
                                     width: 2.w,
                                   ),
 
-                                  
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(5.0),
                                     child: InkWell(
@@ -306,7 +303,11 @@ class DetailsObjView extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                Html(data:object.tableOfContent ?? "<head></head>"),
+                                object is PackageData
+                                    ? Container()
+                                    : Html(
+                                        data: object.tableOfContent ??
+                                            "<head></head>"),
                                 Container(
                                   height:
                                       MediaQuery.of(context).size.height * 0.3 -

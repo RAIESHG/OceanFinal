@@ -160,7 +160,7 @@ class ViewAllData {
             : json["books"] == null
                 ? List<Category>.from(
                     //TODO: only one category is shown fix
-                    json["categories"][0].map((x) => Category.fromMap(x)))
+                    json["categories"].map((x) => Category.fromMap(x)))
                 : List<Category>.from(
                     json["categories"].map((x) => Category.fromMap(x))),
       );

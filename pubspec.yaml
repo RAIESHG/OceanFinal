@@ -49,7 +49,7 @@ dependencies:
   chewie:
   carousel_slider:
   flutter_html: ^2.1.2
-  webview_flutter_plus: ^0.2.3
+
   image_picker: ^0.8.3+2
   dio: ^4.0.0
   syncfusion_flutter_pdfviewer: ^19.2.62-beta

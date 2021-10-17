@@ -38,7 +38,7 @@ class StackedElevatedImage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.168,
                 padding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.2),
+                    left: MediaQuery.of(context).size.width * 0.32),
                 child: Card(
                   elevation: 5,
                                   child: Container(
@@ -64,7 +64,7 @@ class StackedElevatedImage extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 0.34,
+                  width: MediaQuery.of(context).size.width * 0.29,
                   height: MediaQuery.of(context).size.height * 0.18,
                   color: Colors.white,
                   child: FadeInImage(

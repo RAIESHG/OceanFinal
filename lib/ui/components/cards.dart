@@ -45,16 +45,16 @@ class BookCard extends StatelessWidget {
                 width: 25.w,
                 child: text(
                   object.title ?? "",
-                  maxLine: 2,
+                  maxLine: 6,
                   isCentered: true,
-                  fontSize: 10.sp,
+                  fontSize: 8.sp,
                   fontweight: FontWeight.w700,
                 ),
               ),
               // SizedBox(
               //   height: MediaQuery.of(context).size.height * 0.01,
               // ),
-              //TODO: Author needed
+         
               object is PackageData
                   ? Container()
                   : Container(
@@ -66,7 +66,7 @@ class BookCard extends StatelessWidget {
                         textColor: Colors.grey,
                         fontweight: FontWeight.w600,
                         isCentered: true,
-                        fontSize: 10.sp,
+                        fontSize: 6.sp,
                       ),
                     ),
               SizedBox(
@@ -88,7 +88,7 @@ class BookCard extends StatelessWidget {
                               textColor: Colors.red,
                               decoration: TextDecoration.lineThrough,
                               fontweight: FontWeight.w400,
-                              fontSize: 11.sp,
+                              fontSize: 9.sp,
                             ),
                     ),
                     SizedBox(

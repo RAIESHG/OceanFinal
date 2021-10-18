@@ -35,10 +35,10 @@ class BottomNavigationBarView extends StatelessWidget {
                     icon: IconWidget(path: homeIcon, color: Color(0xff005AAA)),
                     label: "Home",
                   ),
-                  // BottomNavigationBarItem(
-                  //   icon: IconWidget(path:libraryIcon, color: Color(0xff005AAA)),
-                  //   label: "My library",
-                  // ),
+                  BottomNavigationBarItem(
+                    icon: IconWidget(path:libraryIcon, color: Color(0xff005AAA)),
+                    label: "My library",
+                  ),
                 
                   BottomNavigationBarItem(
                       icon: IconWidget(path: userIcon, color: Color(0xff005AAA)),

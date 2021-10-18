@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ocean_publication/helpers/colors.dart';
 import 'package:ocean_publication/ui/components/drawer/drawerViewModel.dart';
 
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
@@ -42,9 +43,9 @@ class DrawerView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Assetimage(path: logo),
+                        Container(height: 18.h, child: Assetimage(path: logo)),
                         SizedBox(
-                          height: 1.h,
+                          height: 2.h,
                         ),
                         text(
                           "Publication Pvt. Ltd.",
@@ -55,10 +56,37 @@ class DrawerView extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Container(
+                    height: 6.h,
+                    color: Colors.blue,
+                    child: InkWell(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.home,
+                              color: Colors.white,
+                              size: 4.h,
+                            ),
+                            SizedBox(
+                              width: 4.w,
+                            ),
+                            text(
+                              "Home",
+                              fontSize: 13.sp,
+                              fontweight: FontWeight.w600,
+                              textColor: Colors.white,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
 
                   model.checkLogin == false
                       ? Container(
-                          height: 10.h,
+                          height: 8.h,
                           padding: EdgeInsets.only(left: 20),
                           child: InkWell(
                             child: Row(
@@ -95,7 +123,7 @@ class DrawerView extends StatelessWidget {
                           // separatorBuilder: (ctx, i) => Divider(),
                           itemBuilder: (ctx, i) {
                             return Container(
-                              height: 10.h,
+                              height: 8.h,
                               padding: EdgeInsets.only(left: 20),
                               child: InkWell(
                                 child: Row(
@@ -110,8 +138,9 @@ class DrawerView extends StatelessWidget {
                                     ),
                                     text(
                                       model.categories[i],
-                                      fontSize: 14.sp,
+                                      fontSize: 13.sp,
                                       fontweight: FontWeight.w600,
+                                      textColor: blackColor,
                                     ),
                                   ],
                                 ),

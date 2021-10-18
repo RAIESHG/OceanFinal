@@ -49,7 +49,6 @@ class LetsExploreView extends StatelessWidget {
                                       fontweight: FontWeight.w700,
                                     ),
                                     SizedBox(height: 2.h),
-                                 
                                     text(
                                       "Let's Explore",
                                       textColor: colorPrimary,
@@ -74,8 +73,9 @@ class LetsExploreView extends StatelessWidget {
                                             vertical: 10.0, horizontal: 5.0),
                                         color: whiteColor,
                                         child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                          // shrinkWrap: true,
+                                          // mainAxisAlignment:
+                                          //     MainAxisAlignment.start,
                                           children: [
                                             Padding(
                                               padding: EdgeInsets.only(
@@ -88,8 +88,9 @@ class LetsExploreView extends StatelessWidget {
                                                   text(
                                                     "${model.letsExploreData!.items![index].heading ?? ""}",
                                                     fontweight: FontWeight.w900,
-                                                     fontSize: 13.sp,
+                                                    fontSize: 13.sp,
                                                     // fontSize: 1,
+                                                  
                                                   ),
                                                   // if (showViewmore)
                                                   //   viewmoreAction(
@@ -99,9 +100,11 @@ class LetsExploreView extends StatelessWidget {
                                                   //           LetsExploreView(type: object.data.first ?? ""));
                                                   //     },
                                                   //   ),
+                                                 
                                                 ],
                                               ),
                                             ),
+                                             SizedBox(height: 1.h,),
                                             SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
                                               child: Row(

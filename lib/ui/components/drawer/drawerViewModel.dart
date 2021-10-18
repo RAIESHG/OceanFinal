@@ -53,7 +53,7 @@ class DrawerViewModel extends BaseViewModel {
     AuthPresenter(),
   ];
   final List<IconData> icons = [
-    //
+    
     Icons.book,
     Icons.video_camera_front,
     Icons.cases,
@@ -65,12 +65,13 @@ class DrawerViewModel extends BaseViewModel {
     Icons.dashboard,
     Icons.save,
     Icons.logout,
+ 
 
     // bookIcon,
     // videoIcon,
     // packageIcon,
     // favouriteIcon,
-    // // settingIcon,
+    // settingIcon,
     // libraryIcon,
     // logo,
     // profileIcon,

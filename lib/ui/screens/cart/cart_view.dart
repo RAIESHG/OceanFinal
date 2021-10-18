@@ -80,6 +80,22 @@ class CartView extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       child: Column(
                         children: [
+                          Container(
+                              height: 8.h,
+                              width: double.infinity,
+                              color: Colors.white,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  text(
+                                    "${model.cartItems.length} Items",
+                                    textColor: Colors.grey,
+                                    fontSize: 13.sp,
+                                  ),
+                                  Icon(Icons.settings, color: Colors.grey,),
+                                ],
+                              )),
+                              SizedBox(height: 1.h),
                           ListView.builder(
                             itemBuilder: (context, index) => Container(
                               // color: Colors.green,
@@ -148,7 +164,7 @@ class CartView extends StatelessWidget {
                                                         Container(
                                                           width: constrains
                                                                   .maxWidth *
-                                                              0.45,
+                                                              0.50,
                                                           height: constrains
                                                                   .maxHeight *
                                                               0.15,
@@ -333,8 +349,18 @@ class CartView extends StatelessWidget {
                           SizedBox(
                             height: 10.h,
                           ),
+                          //  Text('Hi'),
+                          //  CartSummaryWidget(),
+                      //  showDialog(
+                      //     context: context,
+                      //     builder: (context) => CartSummaryWidget(
+                      //       quantity: totalquantities,
+                      //       totalPrice: totalPrice,
+                      //     ),
+                      //   );
                         ],
                       ),
+                     
                     ),
             ),
           );

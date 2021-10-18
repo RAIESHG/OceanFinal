@@ -28,17 +28,14 @@ class CartView extends StatelessWidget {
                   ? Container(height: 9.h)
                   : InkWell(
                       onTap: () {
-                        num totalquantities = 0;
-                        num totalPrice = 0;
-                        model.cartItems.forEach((element) {
-                          totalquantities += element.quantity!;
-                          totalPrice += (element.price * element.quantity)!;
-                        });
+                        // model.cartItems.forEach((element) {
+                        //   model.increaseTotal(element);
+                        // });
                         showDialog(
                           context: context,
                           builder: (context) => CartSummaryWidget(
-                            quantity: totalquantities,
-                            totalPrice: totalPrice,
+                            quantity: model.totalquantities,
+                            totalPrice: model.totalPrice,
                           ),
                         );
                       },
@@ -349,15 +346,163 @@ class CartView extends StatelessWidget {
                           SizedBox(
                             height: 10.h,
                           ),
-                          //  Text('Hi'),
-                          //  CartSummaryWidget(),
-                      //  showDialog(
-                      //     context: context,
-                      //     builder: (context) => CartSummaryWidget(
-                      //       quantity: totalquantities,
-                      //       totalPrice: totalPrice,
-                      //     ),
-                      //   );
+
+                          Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  width: 90.w,
+                                  padding:
+                                      EdgeInsets.fromLTRB(7.0, 12.0, 7.0, 7.0),
+                                  decoration: BoxDecoration(
+                                      color: whiteColor,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      text(
+                                        "Your Cart Summary",
+                                        fontweight: FontWeight.w700,
+                                        fontSize: 25,
+                                      ),
+                                      SizedBox(
+                                        height: 2.h,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 20),
+                                        child: Column(
+                                          children: [
+                                            // summaryDetails(
+                                            //   title: "Bookname",
+                                            //   detail: item.title,
+                                            // ),
+                                            // divider(),
+                                            summaryDetails(
+                                              title: "Total Quantity",
+                                              detail:
+                                                  "${model.totalquantities}",
+                                            ),
+                                            Divide(),
+                                            summaryDetails(
+                                              title: "Subtotal",
+                                              detail: "${model.totalPrice}",
+                                            ),
+                                            Divide(),
+                                            summaryDetails(
+                                                title: "Discount", detail: "0"),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 5.0),
+                                              child: Row(
+                                                children: List.generate(
+                                                  50,
+                                                  (index) => Expanded(
+                                                    child: Container(
+                                                      color: index % 2 == 0
+                                                          ? Colors.transparent
+                                                          : Colors.grey,
+                                                      height: 2,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            summaryDetails(
+                                              title: "Grand Total",
+                                              detail: "${model.totalPrice}",
+                                              color: blackColor,
+                                            ),
+                                            SizedBox(
+                                              height: 2.h,
+                                            ),
+                                            Divide(),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 1.h,
+                                      ),
+                                      Container(
+                                        // color: Colors.red,
+                                        // height: context.screenHeight * 0.15,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            text(
+                                              "Proceed your Payment with"
+                                                  .toUpperCase(),
+                                              fontweight: FontWeight.w700,
+                                              fontSize: 20,
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                // ignore: deprecated_member_use
+                                                OutlineButton(
+                                                  child: IconWidget(
+                                                    path: esewaIcon,
+                                                    width: 10.w,
+                                                    height: 5.h,
+                                                  ),
+                                                  borderSide: BorderSide(
+                                                      color: colorPrimary),
+                                                  onPressed: () async {
+                                                    // ESewaConfiguration _configuration = ESewaConfiguration(
+                                                    //     clientID:
+                                                    //         "JB0BBQ4aD0UqIThFJwAKBgAXEUkEGQUBBAwdOgABHD4DChwUAB0R",
+                                                    //     secretKey:
+                                                    //         "BhwIWQQADhIYSxILExMcAgFXFhcOBwAKBgAXEQ==",
+                                                    //     environment: ESewaConfiguration
+                                                    //         .ENVIRONMENT_TEST //ENVIRONMENT_LIVE
+                                                    //     );
+                                                    // ESewaPnp _eSewaPnp =
+                                                    //     ESewaPnp(configuration: _configuration);
+                                                    // ESewaPayment _payment = ESewaPayment(
+                                                    //   amount: 564,
+                                                    //   productName: "Ocean Publication",
+                                                    //   productID: "Ocn pub",
+                                                    //   callBackURL: "",
+                                                    // );
+                                                    // try {
+                                                    //   final _res = await _eSewaPnp.initPayment(
+                                                    //     payment: _payment,
+                                                    //   );
+
+                                                    //   print(_res.message);
+                                                    //   print(_res.status);
+                                                    //   // Handle success
+                                                    // } on ESewaPaymentException catch (e) {
+                                                    //   // Handle error
+                                                    //   print(e.toString());
+                                                    // }
+                                                  },
+                                                ),
+                                                // ignore: deprecated_member_use
+                                                OutlineButton(
+                                                  onPressed: () {
+                                                    model.completeBuy();
+                                                  },
+                                                  borderSide: BorderSide(
+                                                      color: colorPrimary),
+                                                  child: text("Buy"),
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(height: 10),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                      

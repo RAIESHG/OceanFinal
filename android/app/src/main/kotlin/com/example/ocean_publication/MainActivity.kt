@@ -1,4 +1,4 @@
-package com.ocean_publication
+package com.example.ocean_publication
 
 import io.flutter.embedding.android.FlutterActivity
 

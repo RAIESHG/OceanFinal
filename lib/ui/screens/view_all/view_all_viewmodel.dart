@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
+import 'package:ocean_publication/model/viewAllResponse/view_all_bookResponse.dart';
+import 'package:ocean_publication/model/viewAllResponse/view_all_packageResponse.dart';
 import 'package:ocean_publication/model/viewAllResponse/view_all_response.dart';
 import 'package:ocean_publication/helpers/requests.dart';
+import 'package:ocean_publication/model/viewAllResponse/view_all_videoResponse.dart';
 import 'package:stacked/stacked.dart';
 
 class ViewAllViewmodel extends BaseViewModel {
   late BuildContext context;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  ViewallResponse? _viewAllResponse;
-  ViewAllData? results;
+  dynamic? _viewAllResponse;
+  dynamic? results;
   List<dynamic> items = [];
   int? expandedTile;
   int? childExpandedTile;
@@ -29,9 +32,24 @@ class ViewAllViewmodel extends BaseViewModel {
     ;
     var response = await getRequest('/$datatype');
     print("${response.body}");
-    _viewAllResponse = viewAllResponseFromMap(response.body);
-    results = _viewAllResponse!.data;
-    items = results!.items!;
+
+    if (type is BookData) {
+      _viewAllResponse = viewAllBookResponseFromMap(response.body);
+
+      results = _viewAllResponse!.data;
+        items = results!.books!;
+    } else if (type is VideoData) {
+      _viewAllResponse = viewAllVideoResponseFromMap(response.body);
+       results = _viewAllResponse!.data;
+        items = results!.videoData!;
+    }
+     else if (type is PackageData) {
+      _viewAllResponse = viewAllPackageResponseFromMap(response.body);
+       results = _viewAllResponse!.data;
+        items = results!.packageData!;
+    }
+    
+
     setBusyForObject("object", false);
     notifyListeners();
   }

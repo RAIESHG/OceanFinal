@@ -9,15 +9,8 @@ import 'package:stacked_services/stacked_services.dart';
 AppBar appBarWithSearch(BuildContext context,
         {TextTheme? theme, String? title}) =>
     AppBar(
-      backgroundColor: Colors.blue.shade700,
+      backgroundColor: colorPrimary,
       centerTitle: true,
-      // title: Text(
-      //   "$title",
-      //   style: TextStyle(
-      //     fontSize: theme.headline6.fontSize,
-      //     fontWeight: FontWeight.w500,
-      //   ),
-      // ),
       title: Container(
         height: 40.0,
         padding: EdgeInsets.only(

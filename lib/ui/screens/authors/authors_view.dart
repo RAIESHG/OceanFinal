@@ -26,7 +26,13 @@ class AuthorsView extends StatelessWidget {
           return Scaffold(
             backgroundColor: Colors.grey.shade300,
             appBar: appBarWithSearch(context, title: 'Authors'),
-            body: Column(
+            body: 
+            model.busy("object") == true ? SpinKitWave(
+                      color: colorPrimary,
+                      itemCount: 8,
+                    ) :
+            model.authors!.data!.length == 0 ? Text("No Authors Available") : 
+            Column(
               children: [
                 Container(
                     height: 8.h,
@@ -86,6 +92,13 @@ class AuthorsView extends StatelessWidget {
                                               ),
 
                                               ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    primary:
+                                                        colorPrimary, // background
+                                                    onPrimary: Colors
+                                                        .white, // foreground
+                                                  ),
                                                   onPressed: () {
                                                     print("go to view profile");
                                                     NavigationService

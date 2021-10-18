@@ -26,9 +26,9 @@ class LoginView extends StatelessWidget {
               backgroundColor: Colors.transparent,
               body: SingleChildScrollView(
                   child: Padding(
-                        padding: EdgeInsets.fromLTRB(20,MediaQuery.of(context).size.height*0.45,20,0),
+                        padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height*0.09,MediaQuery.of(context).size.height*0.45,20,0),
                     child: Container(
-                        width: 90.w,
+                        width: 70.w,
                         height: 50.h,
                         padding: EdgeInsets.symmetric(
                           horizontal: 10,
@@ -51,17 +51,17 @@ class LoginView extends StatelessWidget {
                           children: [
                             textField(
                               controller: model.emailController,
-                              title: "Email",
-                              hintText: "user@mail.com",
+                              title: "",
+                              hintText: "Email",
                               onChanged: (value) {
               // print(value);
                               },
                             ),
                             textField(
                               controller: model.passwordController,
-                              title: "Password",
+                              title: "",
                               obscureText: true,
-                              hintText: "*" * 7,
+                              hintText: "Password",
                               onChanged: (value) {
               // print(value);
                               },

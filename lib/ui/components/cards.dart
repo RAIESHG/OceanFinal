@@ -45,29 +45,30 @@ class BookCard extends StatelessWidget {
                 width: 25.w,
                 child: text(
                   object.title ?? "",
-                  maxLine: 2,
+                  maxLine: 6,
                   isCentered: true,
-                  fontSize: 10.sp,
+                  fontSize: 8.sp,
                   fontweight: FontWeight.w700,
                 ),
               ),
               // SizedBox(
               //   height: MediaQuery.of(context).size.height * 0.01,
               // ),
-              //TODO: Author needed
-              //  object.author == null ? 
-              // Container(
-              //   width: 20.w,
-              //   margin: const EdgeInsets.only(top: 5.0),
-              //   child: text(
-              //     object.author,
-              //     maxLine: 1,
-              //     textColor: Colors.grey,
-              //     fontweight: FontWeight.w600,
-              //     isCentered: true,
-              //     fontSize: 10.sp,
-              //   ),
-              // ) : Container(),
+         
+              object is PackageData
+                  ? Container()
+                  : Container(
+                      width: 20.w,
+                      margin: const EdgeInsets.only(top: 5.0),
+                      child: text(
+                        object.author,
+                        maxLine: 1,
+                        textColor: Colors.grey,
+                        fontweight: FontWeight.w600,
+                        isCentered: true,
+                        fontSize: 6.sp,
+                      ),
+                    ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
@@ -77,16 +78,18 @@ class BookCard extends StatelessWidget {
                   children: [
                     Container(
                       width: 10.w,
-                      child: text(
-                        "${object.price}",
-                        // // TODO: change price
+                      child: object.price == 0
+                          ? text("")
+                          : text(
+                              "${object.price ?? ""}",
+                              // // TODO: change price
 
-                        // "Rs 500", isCentered: true,
-                        textColor: Colors.red,
-                        decoration: TextDecoration.lineThrough,
-                        fontweight: FontWeight.w400,
-                        fontSize: 11.sp,
-                      ),
+                              // "Rs 500", isCentered: true,
+                              textColor: Colors.red,
+                              decoration: TextDecoration.lineThrough,
+                              fontweight: FontWeight.w400,
+                              fontSize: 9.sp,
+                            ),
                     ),
                     SizedBox(
                       width: 1.h,
@@ -95,7 +98,7 @@ class BookCard extends StatelessWidget {
                       child: text(
                         // "Rs 500",
                         // TODO: REVIEW change offerprice
-                        "${object.offerPrice ?? object.price}",
+                        "${object.offerPrice == 0 ? "" : object.offerPrice ?? ""}",
                         textColor: Colors.green,
                         isCentered: true,
                         fontweight: FontWeight.w500,

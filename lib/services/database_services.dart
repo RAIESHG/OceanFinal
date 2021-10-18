@@ -3,6 +3,7 @@ import 'package:ocean_publication/ui/screens/cart/cart_viewmodel.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
+
 class CartService {
   final String tableName = 'cart';
   Database? database;
@@ -28,12 +29,27 @@ class CartService {
 
   Future<void> addToDB(CartItem item) async {
     //
+    bool canAdd = true;
     if (database == null) {
       await openDB();
     }
-    var map = item.toMap();
-    print(jsonEncode(map));
-    await database!.insert(tableName, map);
+    List<CartItem> products = [];
+    var data = await database!.query(tableName);
+    for (var p in data) {
+      products.add(cartItemFromMap(jsonEncode(p)));
+    }
+
+    for (int i = 0; i < products.length; i++) {
+      if (item.id == products[i].id) {
+        canAdd = false;
+      }
+    }
+
+    if (canAdd == true) {
+      var map = item.toMap();
+      print(jsonEncode(map));
+      await database!.insert(tableName, map);
+    }
   }
 
   Future<List<CartItem>> getFromDB() async {

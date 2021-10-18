@@ -56,9 +56,9 @@ class ProfileView extends StatelessWidget {
                                                 0.15,
                                       ),
                                       text(
-                                        "${model.item!.firstName}",
-                                        textColor: colorPrimary,
-                                        fontSize: 20,
+                                        "${model.item!.firstName} ${model.item!.lastName} ",
+                                        textColor: blackColor,
+                                        fontSize: 25,
                                         fontweight: FontWeight.w600,
                                       ),
                                       SizedBox(

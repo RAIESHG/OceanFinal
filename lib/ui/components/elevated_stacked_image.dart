@@ -4,6 +4,7 @@ import 'package:ocean_publication/app/app.router.dart';
 import 'package:ocean_publication/locator/locator.dart';
 import 'package:ocean_publication/model/authors/authors.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
+import 'package:ocean_publication/model/viewAllResponse/view_all_packageResponse.dart';
 import 'package:ocean_publication/ui/screens/authors/author_profile_view.dart';
 import 'package:ocean_publication/ui/screens/cart/cart_view.dart';
 import 'package:ocean_publication/ui/screens/cart/cart_viewmodel.dart';
@@ -38,18 +39,22 @@ class StackedElevatedImage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.168,
                 padding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.2),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.015),
-                    color: Colors.white,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.02),
-                    child: detailsWidget,
+                    left: MediaQuery.of(context).size.width * 0.32),
+                child: Card(
+                  elevation: 5,
+                                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                    decoration: BoxDecoration(
+                      
+                      borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.015),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.02),
+                      child: detailsWidget,
+                    ),
                   ),
                 ),
               ),
@@ -60,7 +65,7 @@ class StackedElevatedImage extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 0.34,
+                  width: MediaQuery.of(context).size.width * 0.29,
                   height: MediaQuery.of(context).size.height * 0.18,
                   color: Colors.white,
                   child: FadeInImage(
@@ -216,7 +221,7 @@ class BookDetailsWidgetForElevatedDisplay extends StatelessWidget {
               height: 2.h,
             ),
             text(
-              item is PackageData ? "" : item.author,
+              item is PackageDatum ? "" : item.author,
               textColor: Colors.grey,
               fontweight: FontWeight.w300,
               fontSize: 14.sp,

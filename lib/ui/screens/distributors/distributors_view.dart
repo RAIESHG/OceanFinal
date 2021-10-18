@@ -31,7 +31,9 @@ class DistributorView extends StatelessWidget {
                     itemCount: 8,
                     color: colorPrimary,
                   )
-                : Column(
+                : 
+                model.distributorData == null ? Text("No Distributor Data Available") :
+                Column(
                     children: [
                       Container(
                           height: 7.h,
@@ -42,6 +44,7 @@ class DistributorView extends StatelessWidget {
                             child: text(
                               "${model.distributorData!.length} Distributors",
                               textColor: Colors.grey,
+                              fontweight: FontWeight.bold,
                               fontSize: 13.sp,
                             ),
                           )),
@@ -60,6 +63,7 @@ class DistributorView extends StatelessWidget {
                                   child: FadeInAnimation(
                                     child: StackedElevatedImage(
                                       detailsWidget: FittedBox(
+                                        
                                         fit: BoxFit.contain,
                                         child: Column(
                                           crossAxisAlignment:
@@ -67,9 +71,7 @@ class DistributorView extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           mainAxisSize: MainAxisSize.min,
-                                          //
                                           children: [
-                                            //
                                             text(
                                               "${model.distributorData![index].name}",
                                               isCentered: false,

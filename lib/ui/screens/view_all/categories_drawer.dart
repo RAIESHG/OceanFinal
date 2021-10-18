@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ocean_publication/model/viewAllResponse/view_all_bookResponse.dart';
 
 import 'package:ocean_publication/model/viewAllResponse/view_all_response.dart';
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
@@ -10,13 +11,13 @@ import 'package:sizer/sizer.dart';
 import 'package:stacked/stacked.dart';
 
 class CategoriesDrawer extends ViewModelWidget<ViewAllViewmodel> {
-  final ViewAllData results;
+  final dynamic results;
   CategoriesDrawer({required this.results});
   @override
   Widget build(BuildContext context, ViewAllViewmodel model) {
     return SafeArea(
       child: Container(
-          width: 57.w,
+        width: 57.w,
         child: Drawer(
           child: Flex(
             direction: Axis.vertical,
@@ -26,13 +27,12 @@ class CategoriesDrawer extends ViewModelWidget<ViewAllViewmodel> {
                 width: double.infinity,
                 color: colorPrimary,
                 child: Column(
-               
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 12.0),
-                      child: Assetimage(path:logo, height: 110),
+                      child: Assetimage(path: logo, height: 110),
                     ),
                     Container(
                       alignment: Alignment.bottomLeft,
@@ -54,11 +54,21 @@ class CategoriesDrawer extends ViewModelWidget<ViewAllViewmodel> {
                   itemCount: results.categories?.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return BuildExpansionTile(
-                      category: results.categories![index],
-                      initiallyExpanded: index == model.expandedTile,
-                      index: index,
-                    );
+                    try {
+                     
+                        return BuildExpansionTile(
+                          category: results.categories![index],
+                          initiallyExpanded: index == model.expandedTile,
+                          index: index,
+                        );
+                    
+                    } catch (e) {
+                      return BuildExpansionTile(
+                        category: results.categories![index][0],
+                        initiallyExpanded: index == model.expandedTile,
+                        index: index,
+                      );
+                    }
                   },
                 ),
               ),
@@ -92,13 +102,13 @@ class CategoriesDrawer extends ViewModelWidget<ViewAllViewmodel> {
 }
 
 class BuildExpansionTile extends ViewModelWidget<ViewAllViewmodel> {
-  final Category? category;
+  final Category category;
   final bool initiallyExpanded;
   final int index;
 
   const BuildExpansionTile(
       {Key? key,
-      this.category,
+      required this.category,
       required this.initiallyExpanded,
       required this.index})
       : super(key: key, reactive: true);

@@ -26,15 +26,19 @@ class HistoryView extends StatelessWidget {
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    height: 7.h,
-                    width: double.infinity,
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("History",
-                          style: Theme.of(context).textTheme.bodyText1),
-                    )),
+               Container(
+                          height: 7.h,
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: text(
+                              "History",
+                              textColor: Colors.grey,
+                              fontweight: FontWeight.bold,
+                              fontSize: 13.sp,
+                            ),
+                          )),
                 model.busy("object") == false
                     ? model.historyData != null
                         ? Expanded(

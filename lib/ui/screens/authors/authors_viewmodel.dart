@@ -5,10 +5,10 @@ import 'package:stacked/stacked.dart';
 class AuthorsViewmodel extends BaseViewModel {
   Author? authors;
   Future<void> getAuthors() async {
-    setBusy(true);
+    setBusyForObject("object", true);
     var response = await getRequest("/authors");
     authors = authorFromMap(response.body);
-    setBusy(false);
+    setBusyForObject("object", false);
     notifyListeners();
   }
 }

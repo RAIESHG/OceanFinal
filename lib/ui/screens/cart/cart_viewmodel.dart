@@ -47,6 +47,7 @@ class CartViewModel extends BaseViewModel {
     print("addded item details");
     print(item.title);
     var cartItem = CartItem(
+      id: item.id,
       image: item.image,
       name: item.title,
       author: item is PackageData ? "" : item.author,

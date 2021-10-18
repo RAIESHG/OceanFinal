@@ -3,7 +3,7 @@ import 'package:ocean_publication/ui/screens/cart/cart_viewmodel.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-//TODO: Id is null in cart
+
 class CartService {
   final String tableName = 'cart';
   Database? database;
@@ -40,7 +40,7 @@ class CartService {
     }
 
     for (int i = 0; i < products.length; i++) {
-      if (item.name == products[i].name) {
+      if (item.id == products[i].id) {
         canAdd = false;
       }
     }

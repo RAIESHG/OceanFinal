@@ -57,14 +57,16 @@ class ViewAllViewmodel extends BaseViewModel {
   void changeActiveActegory(int categoryId) {
     items = [];
     print("Hamro${categoryId}");
-    for (int i = 0; i < results!.items!.length; i++) {
-      print("${results!.items![i].categoryId} IITTEEMMSS");
+
+    
+    for (int i = 0; i < results!.books!.length; i++) {
+      print("${results!.books![i].categoryId} IITTEEMMSS");
     }
 
     if (categoryId == null) {
-      items.addAll([results!.items]);
+      items.addAll([results!.books]);
     } else {
-      results!.items!.forEach(
+      results!.books!.forEach(
         (e) {
           if (e.categoryId == categoryId) {
             print("${e.title},${e.categoryId} ==> $categoryId");

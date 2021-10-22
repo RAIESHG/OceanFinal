@@ -22,7 +22,7 @@ class SearchViewModel extends BaseViewModel {
       print(e.toString());
     }
     setBusyForObject("object", false);
-    notifyListeners();
+    // notifyListeners();
   }
 
   void changeActiveList(int id) async {

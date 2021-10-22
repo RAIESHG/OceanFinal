@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:ocean_publication/app/app.router.dart';
 import 'package:ocean_publication/helpers/requests.dart';
 import 'package:ocean_publication/locator/locator.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
@@ -9,10 +10,12 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class CartViewModel extends BaseViewModel {
+  NavigationService navigationService = locator<NavigationService>();
+
   num totalquantities = 0;
   num totalPrice = 0;
   SnackbarService snackbarService = locator<SnackbarService>();
-  NavigationService navigationService = locator<NavigationService>();
+  
   List<CartItem> cartItems = [];
   CartService cartService = CartService();
   Future<void> getCartItems() async {
@@ -104,6 +107,10 @@ class CartViewModel extends BaseViewModel {
     }
     notifyListeners();
   }
+   navigatetocheckOutView() {
+    Future.delayed(Duration(seconds: 1));
+    navigationService.navigateTo(Routes.checkoutView);
+  }
 }
 
 CartItem cartItemFromMap(String str) => CartItem.fromMap(json.decode(str));
@@ -166,4 +173,7 @@ class CartItem {
         "image": image == null ? null : image,
         "quantity": quantity == null ? null : quantity,
       };
+
+
+      
 }

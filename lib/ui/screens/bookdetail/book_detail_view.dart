@@ -6,7 +6,7 @@ import 'package:ocean_publication/ui/components/elevated_stacked_image.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
 
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
+
 
 class BookDetailView extends StatelessWidget {
   const BookDetailView({Key? key}) : super(key: key);
@@ -211,7 +211,6 @@ class BookDetailView extends StatelessWidget {
                                   maxLine: 50,
                                   // fontSize: context.textTheme.subtitle2!.fontSize,
                                 ),
-                    
                               ),
                             ],
                             if (model.isfeedback == true) ...[

@@ -59,6 +59,7 @@ import 'package:stacked/stacked_annotations.dart';
   MaterialRoute(
     page: ForgotPasswordView,
   ),
+ 
   MaterialRoute(page: HistoryByIdView),
   MaterialRoute(page: SavedCourseView),
   MaterialRoute(page: AuthPresenter),

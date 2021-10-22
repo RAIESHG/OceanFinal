@@ -23,7 +23,7 @@ class CategoriesDrawer extends ViewModelWidget<ViewAllViewmodel> {
             direction: Axis.vertical,
             children: [
               Container(
-                height: 30.h,
+                height: 28.h,
                 width: double.infinity,
                 color: colorPrimary,
                 child: Column(
@@ -55,13 +55,11 @@ class CategoriesDrawer extends ViewModelWidget<ViewAllViewmodel> {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     try {
-                     
-                        return BuildExpansionTile(
-                          category: results.categories![index],
-                          initiallyExpanded: index == model.expandedTile,
-                          index: index,
-                        );
-                    
+                      return BuildExpansionTile(
+                        category: results.categories![index],
+                        initiallyExpanded: index == model.expandedTile,
+                        index: index,
+                      );
                     } catch (e) {
                       return BuildExpansionTile(
                         category: results.categories![index][0],
@@ -72,8 +70,8 @@ class CategoriesDrawer extends ViewModelWidget<ViewAllViewmodel> {
                   },
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 10),
+              Container(
+                width: 45.w,
                 child: ElevatedButton(
                   onPressed: () {
                     model.changeActiveActegory(0);
@@ -123,23 +121,22 @@ class BuildExpansionTile extends ViewModelWidget<ViewAllViewmodel> {
             onExpansionChanged: (bool value) {
 //
             },
+            
             // key: Key("$expandedTile"),
             title: Container(
-              color: index != null && initiallyExpanded ? colorPrimary : null,
+              color: index != null && initiallyExpanded ? Colors.black : null,
               constraints: BoxConstraints.expand(
-                height: 35.0,
+                height: 3.h,
                 width: double.infinity,
               ),
-              child: Center(
-                child: text(
-                  "${category!.title}",
-                  textColor: !initiallyExpanded ? colorPrimary : Colors.white,
-                  fontweight: FontWeight.bold,
-                  fontSize: 12.sp,
-                ),
+              child: text(
+                "${category.title}",
+                textColor: !initiallyExpanded ? Colors.black : Colors.white,
+                // fontweight: FontWeight.bold,
+                fontSize: 12.sp,
               ),
             ),
-            children: category!.childs!.map(
+            children: category.childs!.map(
               (parentCategory) {
                 if (parentCategory.childs!.length > 0) {
 //
@@ -153,7 +150,7 @@ class BuildExpansionTile extends ViewModelWidget<ViewAllViewmodel> {
                 } else {
                   return InkWell(
                     onTap: () {
-                      model.changeActiveActegory(category!.id ?? 0);
+                      model.changeActiveActegory(category.id ?? 0);
                       Navigator.of(context).pop();
                     },
                     child: Container(

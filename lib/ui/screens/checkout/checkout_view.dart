@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 
 import 'package:ocean_publication/ui/components/book_slider_view.dart';
+import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/ui/components/reusable_wiidgets.dart';
 
 import 'package:ocean_publication/helpers/colors.dart';
@@ -26,7 +27,6 @@ class CheckoutView extends StatelessWidget {
         builder: (context, model, child) {
           return SafeArea(
             child: Scaffold(
-              resizeToAvoidBottomInset: true,
               backgroundColor: Colors.grey.shade300,
               appBar: appBarWithSearch(context, title: "Cart"),
               body: Container(
@@ -34,7 +34,7 @@ class CheckoutView extends StatelessWidget {
                   children: [
                     // 10.heightBox,
                     Container(
-                      // height: context.screenHeight * 0.25,
+                      height: MediaQuery.of(context).size.height * 0.25,
                       child: Stack(
                         children: [
                           Positioned(
@@ -42,8 +42,9 @@ class CheckoutView extends StatelessWidget {
                             right: 20.0,
                             left: 20.0,
                             child: Container(
-                              // height: context.screenHeight * 0.2 - 5,
-                              // width: context.screenWidth * 0.85,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.2 - 5,
+                              width: MediaQuery.of(context).size.height * 0.85,
                               decoration: BoxDecoration(
                                 color: colorPrimary,
                                 borderRadius: borderRadius(radius: 10.0),
@@ -69,7 +70,7 @@ class CheckoutView extends StatelessWidget {
                             right: 20.0,
                             left: 15.0,
                             child: Container(
-                             child: Text('Hi'),
+                              child: Text('Hi'),
                               // height: context.screenHeight * 0.24 - 10,
                               // width: context.screenWidth * 0.85 - 10,
                               // child: FittedBox(
@@ -84,15 +85,89 @@ class CheckoutView extends StatelessWidget {
                       ),
                     ),
                     // 10.heightBox,
-                    CartSummaryWidget(
-                        item: item, quantity: model.quantity),
-                   SizedBox(
+                    CartSummaryWidget(item: item, quantity: item.quantity),
+                    SizedBox(
                       height: 1.h,
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      child: BooKSlider(context: context, object: "Shop more"),
-                    ),
+
+                      Container(
+                                color: Colors.white,
+                                // height: context.screenHeight * 0.15,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    text(
+                                      "Proceed your Payment with".toUpperCase(),
+                                      fontweight: FontWeight.w700,
+                                      fontSize: 20,
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        // ignore: deprecated_member_use
+                                        OutlineButton(
+                                          child: IconWidget(
+                                            path: esewaIcon,
+                                            width: 10.w,
+                                            height: 5.h,
+                                          ),
+                                          borderSide:
+                                              BorderSide(color: colorPrimary),
+                                          onPressed: () async {
+                                            // ESewaConfiguration _configuration = ESewaConfiguration(
+                                            //     clientID:
+                                            //         "JB0BBQ4aD0UqIThFJwAKBgAXEUkEGQUBBAwdOgABHD4DChwUAB0R",
+                                            //     secretKey:
+                                            //         "BhwIWQQADhIYSxILExMcAgFXFhcOBwAKBgAXEQ==",
+                                            //     environment: ESewaConfiguration
+                                            //         .ENVIRONMENT_TEST //ENVIRONMENT_LIVE
+                                            //     );
+                                            // ESewaPnp _eSewaPnp =
+                                            //     ESewaPnp(configuration: _configuration);
+                                            // ESewaPayment _payment = ESewaPayment(
+                                            //   amount: 564,
+                                            //   productName: "Ocean Publication",
+                                            //   productID: "Ocn pub",
+                                            //   callBackURL: "",
+                                            // );
+                                            // try {
+                                            //   final _res = await _eSewaPnp.initPayment(
+                                            //     payment: _payment,
+                                            //   );
+
+                                            //   print(_res.message);
+                                            //   print(_res.status);
+                                            //   // Handle success
+                                            // } on ESewaPaymentException catch (e) {
+                                            //   // Handle error
+                                            //   print(e.toString());
+                                            // }
+                                          },
+                                        ),
+                                        model.busy("buyobject") == true ? CircularProgressIndicator() : 
+                                        // ignore: deprecated_member_use
+                                        OutlineButton(
+                                          onPressed: () {
+                                            model.completeBuy();
+                                          },
+                                          borderSide:
+                                              BorderSide(color: colorPrimary),
+                                          child: text("Buy"),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 10),
+                                  ],
+                                ),
+                              ),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    //   child: BooKSlider(context: context, object: "Shop more"),
+                    // ),
                     SizedBox(
                       height: 1.h,
                     ),
@@ -256,23 +331,24 @@ class CartSummaryWidget extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: Column(
                     children: [
-                      summaryDetails(
-                        title: "Bookname",
-                        detail: item.title,
-                      ),
+                      // summaryDetails(
+                      //   title: "Bookname",
+                      //   detail: item.name,
+                      // ),
                       Divide(),
-                      summaryDetails(title: "Quantity", detail: "$quantity"),
+                      summaryDetails(
+                          title: "Quantity", detail: "${item.quantity}"),
                       Divide(),
                       summaryDetails(
                         title: "Subtotal",
-                        detail: "${item.offerPrice * quantity}",
+                        detail: "${item.offerPrice * item.quantity}",
                       ),
                       Divide(),
                       summaryDetails(title: "Discount", detail: "0"),
                       dottedLine(),
                       summaryDetails(
                         title: "Grand Total",
-                        detail: "${item.offerPrice * quantity}",
+                        detail: "${item.offerPrice * item.quantity}",
                         color: blackColor,
                       ),
                       // 8.heightBox,

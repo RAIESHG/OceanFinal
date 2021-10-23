@@ -242,7 +242,7 @@ class BookDetailsWidgetForElevatedDisplay extends StatelessWidget {
                 SizedBox(
                   width: 5.w,
                 ),
-                text("${item.offerPrice}".toCurrency,
+                text("${item.offerPrice ?? "" }",
                     textColor: blackColor,
                     fontweight: FontWeight.w500,
                     fontSize: 12.sp

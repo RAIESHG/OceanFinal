@@ -86,7 +86,7 @@ class DrawerView extends StatelessWidget {
 
                   model.checkLogin == false
                       ? Container(
-                          height: 8.h,
+                          height: 7.h,
                           padding: EdgeInsets.only(left: 20),
                           child: InkWell(
                             child: Row(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 
-import 'package:ocean_publication/ui/components/book_slider_view.dart';
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/ui/components/reusable_wiidgets.dart';
 
@@ -32,7 +31,9 @@ class CheckoutView extends StatelessWidget {
               body: Container(
                 child: ListView(
                   children: [
-                    // 10.heightBox,
+                    SizedBox(
+                      height: 1.h,
+                    ),
                     Container(
                       height: MediaQuery.of(context).size.height * 0.25,
                       child: Stack(
@@ -51,34 +52,18 @@ class CheckoutView extends StatelessWidget {
                               ),
                               child: Container(
                                 padding: EdgeInsets.only(
-                                    // left: context.screenWidth * 0.15,
-                                    // top: context.screenWidth * 0.05,
-                                    ),
+                                  // left: MediaQuery.of(context).size.width * 0.01,
+                                  top: MediaQuery.of(context).size.width * 0.05,
+                                ),
                                 alignment: Alignment.topCenter,
                                 child: text(
                                   "Checkout",
                                   textColor: whiteColor,
-                                  fontSize: 20,
+                                  fontSize: 13.sp,
                                   fontweight: FontWeight.w700,
                                   isCentered: null,
                                 ),
                               ),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 18.0,
-                            right: 20.0,
-                            left: 15.0,
-                            child: Container(
-                              child: Text('Hi'),
-                              // height: context.screenHeight * 0.24 - 10,
-                              // width: context.screenWidth * 0.85 - 10,
-                              // child: FittedBox(
-                              //   child: StackedElevatedImage(
-                              //     detailsWidget: checkoutItemDetail(),
-                              //     image: widget.item.image,
-                              //   ),
-                              // ),
                             ),
                           ),
                         ],
@@ -90,80 +75,98 @@ class CheckoutView extends StatelessWidget {
                       height: 1.h,
                     ),
 
-                      Container(
-                                color: Colors.white,
-                                // height: context.screenHeight * 0.15,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    text(
-                                      "Proceed your Payment with".toUpperCase(),
-                                      fontweight: FontWeight.w700,
-                                      fontSize: 20,
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        // ignore: deprecated_member_use
-                                        OutlineButton(
-                                          child: IconWidget(
-                                            path: esewaIcon,
-                                            width: 10.w,
-                                            height: 5.h,
-                                          ),
-                                          borderSide:
-                                              BorderSide(color: colorPrimary),
-                                          onPressed: () async {
-                                            // ESewaConfiguration _configuration = ESewaConfiguration(
-                                            //     clientID:
-                                            //         "JB0BBQ4aD0UqIThFJwAKBgAXEUkEGQUBBAwdOgABHD4DChwUAB0R",
-                                            //     secretKey:
-                                            //         "BhwIWQQADhIYSxILExMcAgFXFhcOBwAKBgAXEQ==",
-                                            //     environment: ESewaConfiguration
-                                            //         .ENVIRONMENT_TEST //ENVIRONMENT_LIVE
-                                            //     );
-                                            // ESewaPnp _eSewaPnp =
-                                            //     ESewaPnp(configuration: _configuration);
-                                            // ESewaPayment _payment = ESewaPayment(
-                                            //   amount: 564,
-                                            //   productName: "Ocean Publication",
-                                            //   productID: "Ocn pub",
-                                            //   callBackURL: "",
-                                            // );
-                                            // try {
-                                            //   final _res = await _eSewaPnp.initPayment(
-                                            //     payment: _payment,
-                                            //   );
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.20,
+                        padding: EdgeInsets.fromLTRB(10, 12.0, 7.0, 7.0),
+                        decoration: BoxDecoration(
+                          color: whiteColor,
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
 
-                                            //   print(_res.message);
-                                            //   print(_res.status);
-                                            //   // Handle success
-                                            // } on ESewaPaymentException catch (e) {
-                                            //   // Handle error
-                                            //   print(e.toString());
-                                            // }
-                                          },
-                                        ),
-                                        model.busy("buyobject") == true ? CircularProgressIndicator() : 
-                                        // ignore: deprecated_member_use
-                                        OutlineButton(
-                                          onPressed: () {
-                                            model.completeBuy();
-                                          },
-                                          borderSide:
-                                              BorderSide(color: colorPrimary),
-                                          child: text("Buy"),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(height: 10),
-                                  ],
+                        // height: context.screenHeight * 0.15,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            text(
+                              "Proceed your Payment with:".toUpperCase(),
+                              fontweight: FontWeight.w700,
+                              fontSize: 13.sp,
+                            ),
+                            SizedBox(
+                              height: 2.h,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                // ignore: deprecated_member_use
+                                OutlineButton(
+                                  child: IconWidget(
+                                    path: esewaIcon,
+                                    width: 10.w,
+                                    height: 5.h,
+                                  ),
+                                  borderSide: BorderSide(color: colorPrimary),
+                                  onPressed: () async {
+                                    // ESewaConfiguration _configuration = ESewaConfiguration(
+                                    //     clientID:
+                                    //         "JB0BBQ4aD0UqIThFJwAKBgAXEUkEGQUBBAwdOgABHD4DChwUAB0R",
+                                    //     secretKey:
+                                    //         "BhwIWQQADhIYSxILExMcAgFXFhcOBwAKBgAXEQ==",
+                                    //     environment: ESewaConfiguration
+                                    //         .ENVIRONMENT_TEST //ENVIRONMENT_LIVE
+                                    //     );
+                                    // ESewaPnp _eSewaPnp =
+                                    //     ESewaPnp(configuration: _configuration);
+                                    // ESewaPayment _payment = ESewaPayment(
+                                    //   amount: 564,
+                                    //   productName: "Ocean Publication",
+                                    //   productID: "Ocn pub",
+                                    //   callBackURL: "",
+                                    // );
+                                    // try {
+                                    //   final _res = await _eSewaPnp.initPayment(
+                                    //     payment: _payment,
+                                    //   );
+
+                                    //   print(_res.message);
+                                    //   print(_res.status);
+                                    //   // Handle success
+                                    // } on ESewaPaymentException catch (e) {
+                                    //   // Handle error
+                                    //   print(e.toString());
+                                    // }
+                                  },
                                 ),
-                              ),
+                                model.busy("buyobject") == true
+                                    ? CircularProgressIndicator()
+                                    :
+                                    // ignore: deprecated_member_use
+                                    OutlineButton(
+                                        onPressed: () {
+                                          model.completeBuy();
+                                        },
+                                        borderSide:
+                                            BorderSide(color: colorPrimary),
+                                        child: text("Buy"),
+                                      )
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ),
+                    ),
                     // Padding(
                     //   padding: EdgeInsets.symmetric(horizontal: 8.0),
                     //   child: BooKSlider(context: context, object: "Shop more"),
@@ -314,26 +317,38 @@ class CartSummaryWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            // width: context.screenWidth * 0.95,
+            width: MediaQuery.of(context).size.width * 0.90,
             padding: EdgeInsets.fromLTRB(7.0, 12.0, 7.0, 7.0),
             decoration: BoxDecoration(
-                color: whiteColor, borderRadius: BorderRadius.circular(10)),
+              color: whiteColor,
+              borderRadius: BorderRadius.circular(5),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 text(
-                  "Your Order Summary",
+                  "YOUR ORDER SUMMARY",
                   fontweight: FontWeight.w700,
-                  // fontSize: context.textTheme.subtitle1!.fontSize! + 3,
+                  fontSize: 13.sp,
                 ),
-                // 15.heightBox,
+                SizedBox(
+                  height: 1.h,
+                ),
                 Padding(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
                       // summaryDetails(
                       //   title: "Bookname",
-                      //   detail: item.name,
+                      //   detail: "${item.bookname.toString()}",
                       // ),
                       Divide(),
                       summaryDetails(
@@ -343,16 +358,25 @@ class CartSummaryWidget extends StatelessWidget {
                         title: "Subtotal",
                         detail: "${item.offerPrice * item.quantity}",
                       ),
-                      Divide(),
+                      Divider(
+                        thickness: 3,
+                      ),
                       summaryDetails(title: "Discount", detail: "0"),
+                      SizedBox(
+                        height: 0.8.h,
+                      ),
                       dottedLine(),
+                      SizedBox(
+                        height: 1.h,
+                      ),
                       summaryDetails(
-                        title: "Grand Total",
-                        detail: "${item.offerPrice * item.quantity}",
+                        title: "Total Amount",
+                        detail: "NRS.${item.offerPrice * item.quantity}",
                         color: blackColor,
                       ),
-                      // 8.heightBox,
-                      Divide(),
+                      SizedBox(
+                        height: 1.h,
+                      ),
                     ],
                   ),
                 ),

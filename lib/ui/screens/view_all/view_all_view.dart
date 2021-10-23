@@ -7,6 +7,7 @@ import 'package:ocean_publication/helpers/colors.dart';
 import 'package:ocean_publication/ui/components/elevated_stacked_image.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
 import 'package:ocean_publication/ui/screens/view_all/view_all_viewmodel.dart';
+import 'package:sizer/sizer.dart';
 import 'categories_drawer.dart';
 import 'package:stacked/stacked.dart';
 
@@ -48,7 +49,8 @@ class ViewAllView extends StatelessWidget {
                     text(
                       model.datatype,
                       fontweight: FontWeight.w600,
-                      fontSize: 20,
+                      fontSize: 15.sp,
+                      textColor: Colors.grey,
                     ),
                     InkWell(
                       onTap: () {
@@ -58,12 +60,13 @@ class ViewAllView extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.filter_alt,
-                            color: colorPrimary,
+                            color: Colors.grey,
                           ),
                           text(
                             "Filter",
                             fontweight: FontWeight.w600,
-                            fontSize: 20,
+                            fontSize: 15.sp,
+                            textColor: Colors.grey,
                           ),
                         ],
                       ),

@@ -33,26 +33,26 @@ class StackedElevatedImage extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              right: 0.0,
+              left: 3,
+              right: 0,
               bottom: 0.0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.168,
+                height: MediaQuery.of(context).size.height * 0.2,
                 padding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.32),
+                    left: MediaQuery.of(context).size.width * 0.2),
                 child: Card(
                   elevation: 5,
-                                  child: Container(
+                  child: Container(
                     height: MediaQuery.of(context).size.height * 0.01,
                     decoration: BoxDecoration(
-                      
                       borderRadius: BorderRadius.circular(
                           MediaQuery.of(context).size.width * 0.015),
                       color: Colors.white,
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * 0.02),
+                          left: MediaQuery.of(context).size.width * 0.1),
                       child: detailsWidget,
                     ),
                   ),
@@ -214,35 +214,42 @@ class BookDetailsWidgetForElevatedDisplay extends StatelessWidget {
           children: [
             //
             text(
-              item.title, fontweight: FontWeight.w600, fontSize: 13.sp,
+              item.title, fontweight: FontWeight.bold, fontSize: 13.sp,
+              textColor: Colors.black,
+
               // fontSize: context.textTheme.subtitle1!.fontSize,
             ),
             SizedBox(
-              height: 2.h,
+              height: 0.1.h,
             ),
-            text(
-              item is PackageDatum ? "" : item.author,
-              textColor: Colors.grey,
-              fontweight: FontWeight.w300,
-              fontSize: 14.sp,
-              // fontSize: context.textTheme.caption!.fontSize,
+            Container(
+              width: 50.w,
+              child: text(
+                item is PackageDatum ? "" : item.author,
+                textColor: Colors.grey,
+                fontweight: FontWeight.w300,
+                fontSize: 12.sp,
+                maxLine: 2,
+
+                // fontSize: context.textTheme.caption!.fontSize,
+              ),
             ),
             SizedBox(
-              height: 2.h,
+              height: 0.8.h,
             ),
             Row(
               children: [
-                text("${item.price}".toCurrency,
-                    textColor: greyColor,
+                text("NRS.${item.price}",
+                    textColor: blackColor,
                     fontweight: FontWeight.w300,
-                    decoration: TextDecoration.lineThrough,
-                    fontSize: 14.sp
+                    // decoration: TextDecoration.lineThrough,
+                    fontSize: 12.sp
                     // fontSize: context.textTheme.subtitle1!.fontSize,
                     ),
                 SizedBox(
                   width: 5.w,
                 ),
-                text("${item.offerPrice ?? "" }",
+                text("${item.offerPrice ?? ""}",
                     textColor: blackColor,
                     fontweight: FontWeight.w500,
                     fontSize: 12.sp
@@ -256,7 +263,6 @@ class BookDetailsWidgetForElevatedDisplay extends StatelessWidget {
             Row(
               children: [
                 //
-          
 
                 ActionButton(
                   title: "View",

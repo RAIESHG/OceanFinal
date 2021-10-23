@@ -203,7 +203,7 @@ class DetailsObjView extends StatelessWidget {
                       ),
                     ),
                     DefaultTabController(
-                      initialIndex: 0,
+                      initialIndex: model.initialIndex,
                       length: 3,
                       child: Column(
                         // direction: Axis.vertical,

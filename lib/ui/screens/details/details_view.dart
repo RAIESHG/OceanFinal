@@ -239,7 +239,7 @@ class DetailsObjView extends StatelessWidget {
                             ).toList(),
                           ),
                           Container(
-                            height: model.isReadingMore ? 1 : 2,
+                            height: 50.h,
                             child: TabBarView(
                               physics: NeverScrollableScrollPhysics(),
                               children: [
@@ -248,53 +248,13 @@ class DetailsObjView extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Container(
-                                        constraints: BoxConstraints(
-                                          minHeight: 10.h,
-                                          // maxHeight: null,
-                                        ),
-                                        height: model.isReadingMore
-                                            ? null
-                                            : MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.35,
-                                        padding: EdgeInsets.all(8.0),
-                                        child: RichText(
-                                          text: TextSpan(
-                                            // text: ((isReadingMore
-                                            //             ? object.description
-                                            //             : object.shortDescription)
-                                            //         .toString())
-                                            //     .ashtmlTags,
-                                            text: model.isReadingMore
-                                                ? model.loremText.toString()
-                                                : model.loremText.toString(),
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                            // children: object.shortDescription != null
-                                            //     ? [
-                                            //         TextSpan(
-                                            //           text: isReadingMore
-                                            //               ? "See less"
-                                            //               : "See More",
-                                            //           recognizer: TapGestureRecognizer()
-                                            //             ..onTap = () {
-                                            //               setState(
-                                            //                 () {
-                                            //                   isReadingMore = !isReadingMore;
-                                            //                 },
-                                            //               );
-                                            //             },
-                                            //           style: TextStyle(
-                                            //               color: isReadingMore
-                                            //                   ? Colors.red
-                                            //                   : Colors.green,
-                                            //               decoration: TextDecoration.underline),
-                                            //         )
-                                            //       ]
-                                            //     : [],
-                                          ),
-                                        ),
+                                  
+                                        height: 10.h,
+                                        // width: 20.w,
+                                        
+                                       child: Html(
+                                        data: object.description ??
+                                            "<head>No Data Available</head>"),
                                       ),
                                       // Padding(
                                       //   padding: EdgeInsets.all(10.0),
@@ -307,7 +267,7 @@ class DetailsObjView extends StatelessWidget {
                                     ? Container()
                                     : Html(
                                         data: object.tableOfContent ??
-                                            "<head></head>"),
+                                            "<head>adadadad</head>"),
                                 Container(
                                   height:
                                       MediaQuery.of(context).size.height * 0.3 -

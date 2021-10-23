@@ -46,7 +46,9 @@ AppBar appBarWithSearch(BuildContext context,
               splashColor: Colors.transparent,
               onTap: () {
                 //apply search
-                print("search");
+               NavigationService navigationService =
+                    locator<NavigationService>();
+                navigationService.navigateTo(Routes.profileView);
               },
               child: Icon(Icons.person_pin)),
         ),

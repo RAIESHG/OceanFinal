@@ -965,7 +965,7 @@ class CartView extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       child: Column(
                         children: [
-                           Container(
+                          Container(
                               height: 8.h,
                               width: double.infinity,
                               color: Colors.white,
@@ -984,7 +984,9 @@ class CartView extends StatelessWidget {
                                   ),
                                 ],
                               )),
-                              SizedBox(height: 1.h,),
+                          SizedBox(
+                            height: 1.h,
+                          ),
                           ListView.builder(
                             itemBuilder: (context, index) => Container(
                               // color: Colors.green,

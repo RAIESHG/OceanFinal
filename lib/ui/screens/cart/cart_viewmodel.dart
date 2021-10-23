@@ -15,7 +15,7 @@ class CartViewModel extends BaseViewModel {
   num totalquantities = 0;
   num totalPrice = 0;
   SnackbarService snackbarService = locator<SnackbarService>();
-  
+
   List<CartItem> cartItems = [];
   CartService cartService = CartService();
   Future<void> getCartItems() async {
@@ -107,10 +107,20 @@ class CartViewModel extends BaseViewModel {
     }
     notifyListeners();
   }
-   navigatetocheckOutView() {
+
+  navigatetocheckOutView() {
+    FinalCart finalcartItem =
+        FinalCart(offerPrice: totalPrice, quantity: totalquantities);
     Future.delayed(Duration(seconds: 1));
-    navigationService.navigateTo(Routes.checkoutView);
+    navigationService.navigateTo(Routes.checkoutView,
+        arguments: CheckoutViewArguments(item: finalcartItem));
   }
+}
+
+class FinalCart {
+  FinalCart({this.offerPrice, this.quantity});
+  final num? quantity;
+  final num? offerPrice;
 }
 
 CartItem cartItemFromMap(String str) => CartItem.fromMap(json.decode(str));
@@ -173,7 +183,4 @@ class CartItem {
         "image": image == null ? null : image,
         "quantity": quantity == null ? null : quantity,
       };
-
-
-      
 }

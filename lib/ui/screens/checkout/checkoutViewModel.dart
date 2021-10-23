@@ -3,12 +3,15 @@ import 'package:ocean_publication/helpers/requests.dart';
 import 'package:ocean_publication/locator/locator.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
 import 'package:ocean_publication/services/database_services.dart';
+import 'package:ocean_publication/services/sharedPref/shared_preferences.dart';
 import 'package:ocean_publication/ui/screens/cart/cart_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class CheckOutViewModel extends BaseViewModel {
   NavigationService navigationService = locator<NavigationService>();
+  SharedPreferencesService sharedPreferencesService =
+      locator<SharedPreferencesService>();
   int quantity = 0;
 
   num totalquantities = 0;
@@ -86,21 +89,27 @@ class CheckOutViewModel extends BaseViewModel {
       cartList
           .add({"id": results[i].id, "name": results[i].type!.toLowerCase()});
     }
-    setBusyForObject("object", true);
+    setBusyForObject("buyobject", true);
     // await getUser();
     //
     var body = {"cart": cartList, "payment_method": "esewa"};
     print(body);
     var response = await postListRequest("/orderStore", cartList: cartList);
 
-    setBusyForObject("object", false);
+    setBusyForObject("buyobject", false);
 
     navigationService.back();
     navigationService.back();
 
     if (response.statusCode == 200) {
+      List<CartItem> results = await cartService.getFromDB();
+      cartItems = results;
+
       snackbarService.showSnackbar(
           message: "Purchase Order Recieved", title: "Sucess");
+      for (int i = 0; i < cartItems.length; i++) {
+      await cartService.deleteFromDB(cartItems[i].id!);
+      }
     } else {
       snackbarService.showSnackbar(
           message: "Please Try Again Later", title: "Something Went Wrong");

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ocean_publication/helpers/colors.dart';
+import 'package:ocean_publication/model/letsExplore/lets_explore.dart';
 import 'package:ocean_publication/ui/components/drawer/drawerViewModel.dart';
 
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
 import 'package:ocean_publication/ui/screens/authentication/auth_presenter.dart';
 import 'package:ocean_publication/ui/screens/authentication/login/login_view.dart';
+import 'package:ocean_publication/ui/screens/lets_explore/lets_explore_view.dart';
 import 'package:sizer/sizer.dart';
 import 'package:stacked/stacked.dart';
 
@@ -85,37 +87,134 @@ class DrawerView extends StatelessWidget {
                   ),
 
                   model.checkLogin == false
-                      ? Container(
-                          height: 7.h,
-                          padding: EdgeInsets.only(left: 20),
-                          child: InkWell(
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.login,
-                                  color: Colors.blue.withOpacity(0.8),
-                                  size: 4.h,
+                      ? Column(
+                        children: [
+                          Container(
+                              height: 7.h,
+                              padding: EdgeInsets.only(left: 20),
+                              child: InkWell(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.book,
+                                      color: Colors.blue.withOpacity(0.8),
+                                      size: 4.h,
+                                    ),
+                                    SizedBox(
+                                      width: 4.w,
+                                    ),
+                                    text(
+                                      "Book",
+                                      fontSize: 14.sp,
+                                      fontweight: FontWeight.w600,
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 4.w,
-                                ),
-                                text(
-                                  "Login/SignUp",
-                                  fontSize: 14.sp,
-                                  fontweight: FontWeight.w600,
-                                ),
-                              ],
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>  LetsExploreView(type: "book"),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AuthPresenter(),
+                             Container(
+                              height: 7.h,
+                              padding: EdgeInsets.only(left: 20),
+                              child: InkWell(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.video_camera_front,
+                                      color: Colors.blue.withOpacity(0.8),
+                                      size: 4.h,
+                                    ),
+                                    SizedBox(
+                                      width: 4.w,
+                                    ),
+                                    text(
+                                      "Video",
+                                      fontSize: 14.sp,
+                                      fontweight: FontWeight.w600,
+                                    ),
+                                  ],
                                 ),
-                              );
-                            },
-                          ),
-                        )
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>     LetsExploreView(type: "video"),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                             Container(
+                              height: 7.h,
+                              padding: EdgeInsets.only(left: 20),
+                              child: InkWell(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.cases,
+                                      color: Colors.blue.withOpacity(0.8),
+                                      size: 4.h,
+                                    ),
+                                    SizedBox(
+                                      width: 4.w,
+                                    ),
+                                    text(
+                                      "Package",
+                                      fontSize: 14.sp,
+                                      fontweight: FontWeight.w600,
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>  LetsExploreView(type: "package"),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          Container(
+                              height: 7.h,
+                              padding: EdgeInsets.only(left: 20),
+                              child: InkWell(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.login,
+                                      color: Colors.blue.withOpacity(0.8),
+                                      size: 4.h,
+                                    ),
+                                    SizedBox(
+                                      width: 4.w,
+                                    ),
+                                    text(
+                                      "Login/SignUp",
+                                      fontSize: 14.sp,
+                                      fontweight: FontWeight.w600,
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => AuthPresenter(),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                        ],
+                      )
                       : ListView.builder(
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,

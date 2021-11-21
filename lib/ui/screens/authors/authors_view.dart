@@ -5,6 +5,7 @@ import 'package:ocean_publication/app/app.router.dart';
 import 'package:ocean_publication/helpers/colors.dart';
 import 'package:ocean_publication/locator/locator.dart';
 import 'package:ocean_publication/model/authors/authors.dart';
+import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
 import 'package:ocean_publication/ui/screens/authors/authors_viewmodel.dart';
@@ -24,6 +25,7 @@ class AuthorsView extends StatelessWidget {
         },
         builder: (context, model, child) {
           return Scaffold(
+             bottomNavigationBar: BottomNavigationBarView(),
             backgroundColor: Colors.grey.shade300,
             appBar: appBarWithSearch(context, title: 'Authors'),
             body: 

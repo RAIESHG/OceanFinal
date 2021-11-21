@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
+import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 import 'package:ocean_publication/helpers/colors.dart';
 import 'package:ocean_publication/ui/components/elevated_stacked_image.dart';
@@ -25,6 +26,7 @@ class ViewAllView extends StatelessWidget {
       builder: (context, model, child) {
         return Scaffold(
           key: model.scaffoldKey,
+           bottomNavigationBar: BottomNavigationBarView(),
           drawer: model.busy("object") == true
               ? SpinKitWave(
                   itemCount: 8,

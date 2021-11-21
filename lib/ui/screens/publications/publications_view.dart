@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/screens/details/details_view.dart';
 import 'package:ocean_publication/ui/screens/publications/publicationViewModel.dart';
 
@@ -14,6 +15,7 @@ class PublicationsView extends StatelessWidget {
     return ViewModelBuilder<PublicationViewModel>.reactive(
         builder: (context, model, child) {
           return Scaffold(
+             bottomNavigationBar: BottomNavigationBarView(),
             // appBar: appBarWithSearch(context, title: 'Publications'),
             body: ListView(
               shrinkWrap: true,

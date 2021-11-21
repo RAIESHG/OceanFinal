@@ -20,6 +20,7 @@ class HistoryView extends StatelessWidget {
         },
         builder: (context, model, child) {
           return Scaffold(
+            
             appBar: appBarWithSearch(context),
             backgroundColor: Colors.grey.shade300,
             bottomNavigationBar: BottomNavigationBarView(),

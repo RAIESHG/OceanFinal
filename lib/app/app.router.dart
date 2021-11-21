@@ -24,6 +24,7 @@ import '../ui/screens/checkout/checkout_view.dart';
 import '../ui/screens/dashboard/homepage/homepage_view.dart';
 import '../ui/screens/details/details_view.dart';
 import '../ui/screens/history/history_by_id/history_by_id.dart';
+import '../ui/screens/lets_explore/lets_explore_view.dart';
 import '../ui/screens/myOrders/my_orders_view.dart';
 import '../ui/screens/profile/edit_profile/editProfile.dart';
 import '../ui/screens/profile/view_profile/profile_view.dart';
@@ -50,6 +51,7 @@ class Routes {
   static const String historyByIdView = '/history-by-id-view';
   static const String savedCourseView = '/saved-course-view';
   static const String authPresenter = '/auth-presenter';
+  static const String letsExploreView = '/lets-explore-view';
   static const all = <String>{
     homepageView,
     loginView,
@@ -70,6 +72,7 @@ class Routes {
     historyByIdView,
     savedCourseView,
     authPresenter,
+    letsExploreView,
   };
 }
 
@@ -96,6 +99,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.historyByIdView, page: HistoryByIdView),
     RouteDef(Routes.savedCourseView, page: SavedCourseView),
     RouteDef(Routes.authPresenter, page: AuthPresenter),
+    RouteDef(Routes.letsExploreView, page: LetsExploreView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -248,6 +252,18 @@ class StackedRouter extends RouterBase {
         settings: data,
       );
     },
+    LetsExploreView: (data) {
+      var args = data.getArgs<LetsExploreViewArguments>(
+        orElse: () => LetsExploreViewArguments(type: ''),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => LetsExploreView(
+          key: args.key,
+          type: args.type,
+        ),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -302,4 +318,11 @@ class HistoryByIdViewArguments {
   final Key? key;
   final dynamic id;
   HistoryByIdViewArguments({this.key, required this.id});
+}
+
+/// LetsExploreView arguments holder class
+class LetsExploreViewArguments {
+  final Key? key;
+  final String type;
+  LetsExploreViewArguments({this.key, required this.type});
 }

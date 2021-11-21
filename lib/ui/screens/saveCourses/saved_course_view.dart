@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:ocean_publication/helpers/colors.dart';
+import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/components/cards.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
@@ -22,6 +23,7 @@ class SavedCourseView extends StatelessWidget {
           return SafeArea(
             child: Scaffold(
               appBar: appBarWithSearch(context),
+               bottomNavigationBar: BottomNavigationBarView(),
               body: model.busy("object") == true
                   ? SpinKitWave(
                       color: colorPrimary,

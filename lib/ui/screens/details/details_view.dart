@@ -170,14 +170,17 @@ class DetailsObjView extends StatelessWidget {
                                         // width: context.screenWidth / 4.5,
                                         padding: EdgeInsets.all(2.0),
                                         color: Colors.orange,
-                                        child: Center(
-                                          child: text(
-                                            "Add to Cart",
-                                            textColor: whiteColor,
-                                            isCentered: true,
-                                            // maxLine: 1,
-                                            height: 1.0,
-                                            fontweight: FontWeight.w500,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Center(
+                                            child: text(
+                                              "Add to Cart",
+                                              textColor: whiteColor,
+                                              isCentered: true,
+                                              // maxLine: 1,
+                                              height: 1.0,
+                                              fontweight: FontWeight.w500,
+                                            ),
                                           ),
                                         ),
                                       ),

@@ -12,6 +12,7 @@ import 'package:ocean_publication/ui/screens/checkout/checkout_view.dart';
 import 'package:ocean_publication/ui/screens/dashboard/homepage/homepage_view.dart';
 import 'package:ocean_publication/ui/screens/details/details_view.dart';
 import 'package:ocean_publication/ui/screens/history/history_by_id/history_by_id.dart';
+import 'package:ocean_publication/ui/screens/lets_explore/lets_explore_view.dart';
 import 'package:ocean_publication/ui/screens/myOrders/my_orders_view.dart';
 import 'package:ocean_publication/ui/screens/profile/edit_profile/editProfile.dart';
 import 'package:ocean_publication/ui/screens/profile/view_profile/profile_view.dart';
@@ -63,6 +64,7 @@ import 'package:stacked/stacked_annotations.dart';
   MaterialRoute(page: HistoryByIdView),
   MaterialRoute(page: SavedCourseView),
   MaterialRoute(page: AuthPresenter),
+  
 ])
 class App {
   /** This class has no puporse besides housing the annotation that generates the required functionality **/

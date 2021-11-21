@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:ocean_publication/helpers/colors.dart';
+import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
 import 'package:ocean_publication/ui/screens/dashboard/dashboard_viewmodel.dart';
@@ -22,6 +23,7 @@ class DashBoardView extends StatelessWidget {
             child: Scaffold(
               backgroundColor: Colors.grey.shade300,
               appBar: appBarWithSearch(context),
+               bottomNavigationBar: BottomNavigationBarView(),
               body: 
            
               SingleChildScrollView(

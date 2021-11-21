@@ -38,34 +38,34 @@ class CheckoutView extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.25,
                       child: Stack(
                         children: [
-                          Positioned(
-                            top: 15.0,
-                            right: 20.0,
-                            left: 20.0,
-                            child: Container(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.2 - 5,
-                              width: MediaQuery.of(context).size.height * 0.85,
-                              decoration: BoxDecoration(
-                                color: colorPrimary,
-                                borderRadius: borderRadius(radius: 10.0),
-                              ),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                  // left: MediaQuery.of(context).size.width * 0.01,
-                                  top: MediaQuery.of(context).size.width * 0.05,
-                                ),
-                                alignment: Alignment.topCenter,
-                                child: text(
-                                  "Checkout",
-                                  textColor: whiteColor,
-                                  fontSize: 13.sp,
-                                  fontweight: FontWeight.w700,
-                                  isCentered: null,
-                                ),
-                              ),
-                            ),
-                          ),
+                          // Positioned(
+                          //   top: 15.0,
+                          //   right: 20.0,
+                          //   left: 20.0,
+                          //   child: Container(
+                          //     height:
+                          //         MediaQuery.of(context).size.height * 0.2 - 5,
+                          //     width: MediaQuery.of(context).size.height * 0.85,
+                          //     decoration: BoxDecoration(
+                          //       color: colorPrimary,
+                          //       borderRadius: borderRadius(radius: 10.0),
+                          //     ),
+                          //     child: Container(
+                          //       padding: EdgeInsets.only(
+                          //         // left: MediaQuery.of(context).size.width * 0.01,
+                          //         top: MediaQuery.of(context).size.width * 0.05,
+                          //       ),
+                          //       alignment: Alignment.topCenter,
+                          //       child: text(
+                          //         "Checkout",
+                          //         textColor: whiteColor,
+                          //         fontSize: 13.sp,
+                          //         fontweight: FontWeight.w700,
+                          //         isCentered: null,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

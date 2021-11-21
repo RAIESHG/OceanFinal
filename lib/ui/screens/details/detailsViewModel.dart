@@ -46,9 +46,9 @@ class DetailViewModel extends BaseViewModel {
   Future<void> addToCart(var object) async {
     await CartViewModel().addToCart(object);
 
-    navigationService.navigateTo(
-      Routes.cartView,
-    );
+    // navigationService.navigateTo(
+    //   Routes.cartView,
+    // );
   }
 
   void saveCourse({required String courseId, required String bookName}) async {

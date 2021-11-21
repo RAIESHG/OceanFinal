@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:ocean_publication/app/app.router.dart';
+import 'package:ocean_publication/locator/locator.dart';
 import 'package:ocean_publication/model/homepageBannerResponse/homepageBannerResponse.dart';
 import 'package:ocean_publication/model/homepageResponse/homepage_response.dart';
 import 'package:ocean_publication/model/choice.dart';
 import 'package:ocean_publication/ui/screens/dashboard/homepage/homepage_repository.dart';
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class HomepageViewmodel extends BaseViewModel {
   HomepageRepository _homepageRepository = HomepageRepository();
@@ -13,7 +16,7 @@ class HomepageViewmodel extends BaseViewModel {
   int selectedIndex = 0;
   int navBarIndex = 0;
   List bannerImageList = [];
-
+  NavigationService navigationService = locator<NavigationService>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   List activeList = [];
   HomepageData? homepageData;
@@ -60,6 +63,10 @@ class HomepageViewmodel extends BaseViewModel {
     notifyListeners();
   }
 
-    bool isElevated = true;
+  exploreNow() {
+    // navigationService.navigateTo(Routes)
+  }
+
+  bool isElevated = true;
   bool showViewmore = true;
 }

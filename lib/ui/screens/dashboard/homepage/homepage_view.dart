@@ -13,6 +13,7 @@ import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/helpers/colors.dart';
 import 'package:ocean_publication/ui/components/cards.dart';
 import 'package:ocean_publication/ui/components/widgets.dart';
+import 'package:ocean_publication/ui/screens/lets_explore/lets_explore_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:sizer/sizer.dart';
 
@@ -189,7 +190,10 @@ class HomepageView extends StatelessWidget {
                                       ),
                                       child: InkWell(
                                         onTap: () {
-                                          //
+                                           Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => LetsExploreView(type: "book",)),
+  );
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(

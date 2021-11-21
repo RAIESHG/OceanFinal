@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/screens/publications/detailsViewModel.dart';
 
 import 'package:stacked/stacked.dart';
@@ -13,6 +14,7 @@ class DetailsView extends StatelessWidget {
     return ViewModelBuilder<DetailsViewModel>.reactive(
         builder: (context, model, child) {
           return Scaffold(
+             bottomNavigationBar: BottomNavigationBarView(),
             // appBar: appBarWithSearch(context),
             body: ListView(
               shrinkWrap: true,

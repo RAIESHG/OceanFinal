@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/components/reusable_wiidgets.dart';
 import 'package:ocean_publication/ui/components/icon_image_component.dart';
 import 'package:ocean_publication/helpers/colors.dart';
@@ -21,6 +22,7 @@ class CartView extends StatelessWidget {
         builder: (context, model, child) {
           return SafeArea(
             child: Scaffold(
+               bottomNavigationBar: BottomNavigationBarView(),
               backgroundColor: Colors.grey.shade300,
               // bottomNavigationBar: model.cartItems.length == 0
               //     ? Container(height: 9.h)

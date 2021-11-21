@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:ocean_publication/ui/components/bottom_navigation/bottom_navigation_view.dart';
 import 'package:ocean_publication/ui/components/constant_widgets/appbarView.dart';
 
 import 'package:ocean_publication/ui/components/reusable_wiidgets.dart';
@@ -26,6 +27,7 @@ class DistributorView extends StatelessWidget {
           return Scaffold(
             backgroundColor: Colors.grey.shade300,
             appBar: appBarWithSearch(context),
+             bottomNavigationBar: BottomNavigationBarView(),
             body: model.isBusy
                 ? SpinKitWave(
                     itemCount: 8,
